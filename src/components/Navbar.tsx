@@ -41,7 +41,7 @@ const navbar = () => {
       Login
     </button>
       </Link>
-    <Link to='' >
+    <Link to='/singup' >
     <button className="bg-[#3d85ff] text-white  px-6 py-2 rounded-full">
       Singup
     </button>
