@@ -1,14 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import  { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../redux/hook';
+import { RootState } from '../redux/store';
+import { logout } from '../redux/features/userSlice';
 
 const navbar = () => {
   
   
   const [open, setOpen] = useState(false);
-
-
+  const dispatch = useAppDispatch();
+  const { token } = useAppSelector((state:RootState) => state.user)
  
+  const handleLogout=()=>{
+    dispatch(logout());
+   
+}
+
     return (
   
     <nav className="bg-[#FFFFFF]   border-b">
@@ -36,16 +44,17 @@ const navbar = () => {
         {/* <NavLinks /> */}
       </ul>
       <div className="md:flex gap-x-2 hidden "> 
-      <Link to=''>
-      <button className="bg-[#3d85ff] text-white  px-6 py-2 rounded-full">
-      Login
-    </button>
-      </Link>
-    <Link to='/singup' >
-    <button className="bg-[#3d85ff] text-white  px-6 py-2 rounded-full">
-      Singup
-    </button>
-    </Link>
+     {
+    token ?
+ <><button onClick={handleLogout} className=" bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full" >LogOut</button> </> : <> <Link to='/login'>
+ <button className="bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full">
+ Login
+</button>
+ </Link></>
+   }
+     
+
+
       </div>
       {/* Mobile nav */}
       <ul
