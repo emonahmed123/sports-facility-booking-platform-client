@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Singup from "../pages/Singup/Singup"
 import Login from "../pages/Login/Login";
 import PrivateRoute from './PrivateRoute'
+import FacilityDetail from "@/components/FacilityDetail";
 export const router =createBrowserRouter([{
 
     
@@ -22,6 +23,11 @@ export const router =createBrowserRouter([{
         path:'/login',
         element:<Login/>
     }
+    ,{
+        path:'/details/:id',
+        element:<FacilityDetail/>
+    }
+
     ]}
     
 ])

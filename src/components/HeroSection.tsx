@@ -9,7 +9,7 @@ const HeroSection = () => {
   
      
     return (
-        <section className=' py-[60px] lg:py-[140px]'>
+        <section className=' py-[60px] lg:pt-[140px] lg:pb-[90px]'>
              
            <div className='max-w-[1170px] mx-auto px-5 xl:px-0 font-Poppis'>
             <div className='max-w-[770px] mx-auto text-center'>
