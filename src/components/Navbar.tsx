@@ -37,16 +37,24 @@ const navbar = () => {
           <Link to="/" className="py-7 px-3 inline-block">
           About Us
           </Link>
-          <Link to="/" className="py-7 px-3 inline-block">
+          <Link to="/contac" className="py-7 px-3 inline-block">
           Contact Us
           </Link>
         </li>
+
+        {
+          token  ?   <Link to="/dashboard/myprofile" className="py-7 px-3 inline-block">
+          Dashboard
+          </Link> : '' 
+        }
         {/* <NavLinks /> */}
       </ul>
       <div className="md:flex gap-x-2 hidden "> 
      {
     token ?
- <><button onClick={handleLogout} className=" bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full" >LogOut</button> </> : <> <Link to='/login'>
+ <><button onClick={handleLogout} className=" bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full" >LogOut</button>      
+
+   </>    : <> <Link to='/login'>
  <button className="bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full">
  Login
 </button>

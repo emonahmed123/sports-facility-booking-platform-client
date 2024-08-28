@@ -29,10 +29,11 @@ const Login = () => {
   
     
       const res = await login(data);
-        const {accessToken}=res.data?.data
+        
+        
+      if (res.data) {
+        const {accessToken}=res?.data?.data
         console.log(accessToken)
-      if (res.data?.data.accessToken) {
-      
         const user =jwtDecode(accessToken)
       
      dispatch(setUser(user))
@@ -50,7 +51,7 @@ const Login = () => {
       }
     
       if (res.error) {
-        const ErrorMassage = res.error?.data?.errorSources[0].message;
+        const ErrorMassage = res.error?.data?.errorSources[0].message || 'Server Dwon';
         console.log(ErrorMassage);
     
         Swal.fire({

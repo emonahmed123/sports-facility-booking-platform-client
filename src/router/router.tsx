@@ -5,7 +5,15 @@ import Singup from "../pages/Singup/Singup"
 import Login from "../pages/Login/Login";
 import PrivateRoute from './PrivateRoute'
 import FacilityDetail from "@/components/FacilityDetail";
-export const router =createBrowserRouter([{
+import FacilityBooking from "@/components/FacilityBooking";
+import Contact from "@/pages/Contact/Contact";
+import NotFound from "@/pages/NotFound/NotFound";
+import DashBoard from "@/components/layout/DashBoard";
+import Myprofile from "@/pages/Dashboard/Myprofile";
+import AddFacility from "@/pages/Dashboard/AddFacility/AddFacility";
+import DeleteFacility from "@/pages/Dashboard/DeleteFacility/DeleteFacility";
+export const router =createBrowserRouter([
+    {
 
     
     path:'/',
@@ -13,7 +21,7 @@ export const router =createBrowserRouter([{
     children:[
         {
         index:true,
-        element:<PrivateRoute><Home/></PrivateRoute>
+        element:<Home/>
 
     },{
         path:'/singup',
@@ -25,9 +33,45 @@ export const router =createBrowserRouter([{
     }
     ,{
         path:'/details/:id',
-        element:<FacilityDetail/>
+        element: <PrivateRoute><FacilityDetail/></PrivateRoute> 
+    }
+    ,{
+        path:'/booking/:id',
+        element:<FacilityBooking/>
+    }
+    ,{
+        path:'/contac',
+        element:<Contact/>
+    }
+    ,{
+        path:'*',
+        element:<NotFound/>
     }
 
-    ]}
-    
+    ]
+},
+
+    {
+        path:'dashboard',
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
+        children:[
+        
+     {
+        path:'/dashboard/myprofile',
+        element:<Myprofile/>
+     },
+     {
+        path:'/dashboard/addFacility',
+        element:<AddFacility/>
+     },
+     {
+        path:'/dashboard/AllFacility',
+        element:<DeleteFacility/>
+     }
+       
+          
+     
+        ]
+    }
+        
 ])
