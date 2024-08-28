@@ -7,12 +7,14 @@ const facilitesApi = baseApi.injectEndpoints({
         url: "/facility",
         method: "GET",
       }),
+      providesTags: ["fac"],
     }),
     getSingleFacility: builder.query({
-      query: (params) => {
-        console.log("insed", params);
-        return { url: `/facility/${params}`, method: "GET" };
-      },
+      query: (params) => ({
+        url: `/facility/${params}`,
+        method: "GET",
+      }),
+      providesTags: ["fac"],
     }),
     postSingleFacility: builder.mutation({
       query: (Info) => ({
@@ -20,12 +22,22 @@ const facilitesApi = baseApi.injectEndpoints({
         method: "POST",
         body: Info,
       }),
+      invalidatesTags: ["fac"],
     }),
     DeletedSingleFacility: builder.mutation({
       query: (params) => ({
         url: `/facility/${params}`,
         method: "DELETE",
       }),
+      invalidatesTags: ["fac"],
+    }),
+    UpdateSingleFacility: builder.mutation({
+      query: (pureData) => ({
+        url: `/facility/${pureData.id}`,
+        method: "PUT",
+        body: pureData.data,
+      }),
+      invalidatesTags: ["fac"],
     }),
   }),
 });
@@ -35,4 +47,5 @@ export const {
   useGetSingleFacilityQuery,
   usePostSingleFacilityMutation,
   useDeletedSingleFacilityMutation,
+  useUpdateSingleFacilityMutation,
 } = facilitesApi;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Loading from "@/components/Loading";
 import { useDeletedSingleFacilityMutation, useGetFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
@@ -8,18 +9,17 @@ const DeleteFacility = () => {
     const {
         data:facility,
         isLoading,
-        isError,
-        error,
-        isSuccess,
+        
       } = useGetFacilityQuery(undefined);
     
       const [deleteFacility, { isLoading: isDeleting }] = useDeletedSingleFacilityMutation();
     
-      const handleDeleteItem = (item) => {
+      const handleDeleteItem = (item:any) => {
         console.log(item)
         
         Swal.fire({
           title: "Are you sure?",
+          position: "top",
           text: "You won't be able to revert this!",
           icon: "warning",
           showCancelButton: true,
@@ -48,7 +48,7 @@ const DeleteFacility = () => {
                 title: `Delete ${item?.name}  successfully`
               });
             } catch (error) {
-              console.error('Delete failed:', error.error);
+              console.error('Delete failed:', error?.error);
     
            
               Swal.fire({
@@ -92,7 +92,7 @@ const DeleteFacility = () => {
                         </thead>
                         <tbody>
                             {
-                                facility?.data.map((item, index) => <tr key={item._id}>
+                                facility?.data.map((item:any, index:any) => <tr key={item._id}>
                                     <td>
                                         {index + 1}
                                     </td>
@@ -110,7 +110,7 @@ const DeleteFacility = () => {
                                     </td>
                                     <td className="">${item.pricePerHour}</td>
                                     <td>
-                                        <Link to={`/dashboard/updateItem/${item._id}`}>
+                                        <Link to={`/dashboard/updatedfac/${item._id}`}>
                                             <button
                                                 className="btn btn-ghost btn-lg bg-orange-500">
                                                 <FaEdit className="text-white 

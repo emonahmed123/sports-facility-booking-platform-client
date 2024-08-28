@@ -12,6 +12,7 @@ import DashBoard from "@/components/layout/DashBoard";
 import Myprofile from "@/pages/Dashboard/Myprofile";
 import AddFacility from "@/pages/Dashboard/AddFacility/AddFacility";
 import DeleteFacility from "@/pages/Dashboard/DeleteFacility/DeleteFacility";
+import UpdateFacility from "@/pages/Dashboard/UpdateFacility/UpdateFacility";
 export const router =createBrowserRouter([
     {
 
@@ -57,7 +58,7 @@ export const router =createBrowserRouter([
         children:[
         
      {
-        path:'/dashboard/myprofile',
+        path:'myprofile',
         element:<Myprofile/>
      },
      {
@@ -67,6 +68,10 @@ export const router =createBrowserRouter([
      {
         path:'/dashboard/AllFacility',
         element:<DeleteFacility/>
+     },
+     {
+        path:'/dashboard/updatedfac/:id',
+        element:<UpdateFacility/>
      }
        
           

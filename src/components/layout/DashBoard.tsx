@@ -1,9 +1,10 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link,  useLocation } from "react-router-dom";
 import {  Outlet } from "react-router-dom";
-import { AiFillShopping,AiOutlinePlus,AiOutlineUserAdd,AiFillMessage,AiOutlineShoppingCart} from 'react-icons/ai'
+import { AiFillShopping,AiOutlinePlus,AiOutlineUserAdd,AiOutlineShoppingCart} from 'react-icons/ai'
 import { MdDashboard } from "react-icons/md";
-import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+// import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart} from "react-icons/fa";
 import { useGetMeQuery } from "@/redux/api/authApi/authApi";
+import Loading from "../Loading";
 
 const DashBoard = () => {
     const {pathname}=useLocation()
@@ -11,10 +12,12 @@ const DashBoard = () => {
     const {
       data:me,
       isLoading,
-      isError,error,
-      isSuccess,
+    
     } = useGetMeQuery(undefined);
 
+    if(isLoading){
+      return <Loading/>
+    }
     
     return (
         <div>
@@ -64,7 +67,7 @@ const DashBoard = () => {
 
 
   </div> 
-  <div className="drawer-side  h-[700px]  ">
+  <div className="drawer-side    ">
     <label htmlFor="my-drawer-3" className="drawer-overlay "></label> 
    
     <ul className="menu p-3   font-normal font-Poppis  bg-[#9260E2] min-h-screen">
