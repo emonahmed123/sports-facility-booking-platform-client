@@ -24,12 +24,12 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["fac"],
     }),
-    DeletedSingleFacility: builder.mutation({
+    DeletedBooking: builder.mutation({
       query: (params) => ({
-        url: `/facility/${params}`,
-        method: "DELETE",
+        url: `/bookings/${params}`,
+        method: "PUT",
       }),
-      invalidatesTags: ["fac"],
+      invalidatesTags: ["book"],
     }),
     UpdateSingleFacility: builder.mutation({
       query: (pureData) => ({
@@ -42,4 +42,8 @@ const bookingApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBookingQuery, useGetmyBookingQuery } = bookingApi;
+export const {
+  useGetAllBookingQuery,
+  useGetmyBookingQuery,
+  useDeletedBookingMutation,
+} = bookingApi;

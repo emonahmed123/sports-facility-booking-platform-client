@@ -93,19 +93,19 @@ const DashBoard = () => {
  
     </div>
 
- 
-    {
-  user?.role==='admin' ? '' : <> 
- <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/mybooking"> <AiOutlineShoppingCart/>
- <span className="text-[16px]">mybooking</span>   </Link></li>
- </>
- }
-
-
     <li>  <Link to='/dashboard/myprofile'> 
     <MdDashboard /><span className="text-[16px]">Dashboard</span></Link> </li>
 
 
+    {
+  user?.role==='admin' ? '' : <> 
+ <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/mybooking"> <AiOutlineShoppingCart/>
+ <span className="text-[16px]">Mybooking</span>   </Link></li>
+ </>
+ }
+
+
+    
      {
       user?.role==='admin'  && <>
       <li className='text-[#FFF] text-[20px] py-2' > <Link to='/dashboard/addFacility'> 

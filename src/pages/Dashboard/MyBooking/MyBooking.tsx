@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import Loading from '@/components/Loading';
-import { useGetmyBookingQuery } from '@/redux/api/bookingApi/bookingApi';
+import { useDeletedBookingMutation, useGetmyBookingQuery } from '@/redux/api/bookingApi/bookingApi';
 import React from 'react';
 import { FaTrashAlt } from 'react-icons/fa';
 import DeleteFacility from '../DeleteFacility/DeleteFacility';
@@ -7,12 +8,15 @@ import Swal from 'sweetalert2';
 
 const MyBooking = () => {
    const {data:MyBooking,isLoading}=useGetmyBookingQuery(undefined)
-   
-   console.log(MyBooking)
+   const [deleteBooking, { isLoading: isDeleting }] =  useDeletedBookingMutation()
+//    console.log(MyBooking)
     
    if(isLoading){
     return <Loading/>
    }
+
+
+
    const handleDeleteItem = (item:any) => {
  
     
@@ -28,8 +32,8 @@ const MyBooking = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await DeleteFacility(item._id).unwrap(); 
-
+          const res = await deleteBooking(item._id).unwrap(); 
+        console.log(res)
      
           const Toast = Swal.mixin({
             toast: true,
@@ -47,7 +51,7 @@ const MyBooking = () => {
             title: `Delete ${item?.name}  successfully`
           });
         } catch (error) {
-          console.error('Delete failed:', error?.error);
+        //   console.error('Delete failed:', error?.error);
 
        
           Swal.fire({

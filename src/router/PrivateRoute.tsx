@@ -10,7 +10,7 @@ import { ReactNode } from "react";
 const PrivateRoute = ( {children}: { children: ReactNode }) => {
     const location = useLocation();
     const { user } = useAppSelector((state:RootState) => state.user);
-    console.log(user)
+
     
     // if(loading){
     //     return <progress className="progress w-56"></progress>

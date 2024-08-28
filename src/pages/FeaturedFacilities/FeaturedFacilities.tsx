@@ -31,7 +31,7 @@ const FeaturedFacilities = () => {
 
   if (isError) {
     const ErrorMassage = error?.error?.data?.errorSources[0].message;
-    console.log(facility);
+    // console.log(facility);
     return (
       <p className="text-[30px] text-center py-5 text-red-600">
         {" "}

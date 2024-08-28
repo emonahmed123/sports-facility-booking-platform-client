@@ -38,7 +38,7 @@ const Singup = () => {
 
     if (res.error) {
       const ErrorMassage = res.error?.data?.errorSources[0].message;
-      console.log(ErrorMassage);
+      // console.log(ErrorMassage);
 
       Swal.fire({
         icon: "error",

@@ -10,12 +10,12 @@ export const baseApi = createApi({
       const persistedState = localStorage.getItem("persist:user");
       if (persistedState) {
         const parsedState = JSON.parse(persistedState);
-        console.log(parsedState);
+        // console.log(parsedState);
         const token = parsedState.token && JSON.parse(parsedState.token);
         if (token) {
           headers.set("Authorization", `Bearer ${token}`);
         }
-        console.log(token);
+        // console.log(token);
       }
       return headers;
     },

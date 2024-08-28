@@ -14,7 +14,7 @@ const AddFacility = () => {
   const [facility, { isSuccess, isError, error }] =
     usePostSingleFacilityMutation();
   const onSubmit = async (data: any) => {
-    console.log(data);
+    // console.log(data);
     const pureData = {
       name: data?.name,
       description: data?.description,
@@ -23,7 +23,7 @@ const AddFacility = () => {
     };
 
     const res = await facility(pureData);
-    console.log(res);
+    // console.log(res);
     if (res.data) {
       Swal.fire({
         icon: "success",
@@ -37,7 +37,7 @@ const AddFacility = () => {
 
   if (isError) {
     if (error.data) {
- console.log(error.data)
+//  console.log(error.data)
 
       Swal.fire({
         icon: "error",

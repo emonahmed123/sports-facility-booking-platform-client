@@ -5,7 +5,7 @@ import { useGetAllBookingQuery } from "@/redux/api/bookingApi/bookingApi";
 const AllBooking = () => {
   const { data: Booking, isLoading } = useGetAllBookingQuery(undefined);
 
-   console.log(Booking)
+//    console.log(Booking)
   if (isLoading) {
     return <Loading />;
   }
