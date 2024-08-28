@@ -15,6 +15,7 @@ import DeleteFacility from "@/pages/Dashboard/DeleteFacility/DeleteFacility";
 import UpdateFacility from "@/pages/Dashboard/UpdateFacility/UpdateFacility";
 import MakeAdmin from "@/pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "./AdminRoute";
+import AboutUs from "@/pages/AboutUs/AboutUs";
 export const router =createBrowserRouter([
     {
 
@@ -45,6 +46,10 @@ export const router =createBrowserRouter([
     ,{
         path:'/contac',
         element:<Contact/>
+    }
+    ,{
+        path:'/AboutUs',
+        element:<AboutUs/>
     }
     ,{
         path:'*',

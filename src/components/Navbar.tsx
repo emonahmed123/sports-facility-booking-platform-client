@@ -34,7 +34,7 @@ const navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/" className="py-7 px-3 inline-block">
+          <Link to="/AboutUs" className="py-7 px-3 inline-block">
           About Us
           </Link>
           <Link to="/contac" className="py-7 px-3 inline-block">

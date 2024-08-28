@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unsafe-optional-chaining */
-import { useForm } from 'react-hook-form';
+import { FieldErrors, FieldValues, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useLoginMutation} from '../../redux/api/authApi/authApi';
-import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import { logout, setToken, setUser } from '../../redux/features/userSlice';
+import { useAppDispatch} from '../../redux/hook';
+import {  setToken, setUser } from '../../redux/features/userSlice';
 import { jwtDecode } from "jwt-decode";
-import { RootState } from '@reduxjs/toolkit/query';
+
 
 
 const Login = () => {
@@ -19,12 +20,12 @@ const Login = () => {
 
     const {
         register,
-        formState: { errors },
+        formState: { errors  },
         handleSubmit,
       } = useForm();
       
      
-    
+      const typedErrors    = errors  as FieldErrors <FieldValues>
    
     const onSubmit = async (data: any) => {
      
@@ -110,14 +111,14 @@ const Login = () => {
                 className="input input-bordered w-full max-w-xs"
               />
               <label className="label">
-                {errors.email?.type === "required" && (
+                {typedErrors?.email?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.email.message}
+                    {typedErrors?.email.message}
                   </span>
                 )}
-                {errors.email?.type === "pattern" && (
+                {typedErrors?.email?.type === "pattern" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.email.message}
+                    {typedErrors?.email.message}
                   </span>
                 )}
               </label>
@@ -144,14 +145,14 @@ const Login = () => {
                 className="input input-bordered w-full max-w-xs"
               />
               <label className="label">
-                {errors.password?.type === "required" && (
+                {typedErrors.password?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.password.message}
+                    {typedErrors?.password.message}
                   </span>
                 )}
-                {errors.password?.type === "minLength" && (
+                {typedErrors?.password?.type === "minLength" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.password.message}
+                    {typedErrors?.password.message}
                   </span>
                 )}
               </label>
