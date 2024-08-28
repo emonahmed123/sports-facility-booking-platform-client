@@ -9,6 +9,13 @@ const authApi = baseApi.injectEndpoints({
         body: userInfo,
       }),
     }),
+    mAkeAdmin: builder.mutation({
+      query: (userInfo) => ({
+        url: "/auth/makeadmin",
+        method: "POST",
+        body: userInfo,
+      }),
+    }),
     login: builder.mutation({
       query: (userInfo) => ({
         url: "/auth/login",
@@ -25,4 +32,9 @@ const authApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useSignUPMutation, useLoginMutation, useGetMeQuery } = authApi;
+export const {
+  useSignUPMutation,
+  useLoginMutation,
+  useGetMeQuery,
+  useMAkeAdminMutation,
+} = authApi;

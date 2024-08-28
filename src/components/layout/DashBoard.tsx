@@ -33,10 +33,13 @@ const DashBoard = () => {
       <div className="flex-1 px-2 mx-2 font-bold text-xl">
         
          {
-          pathname.includes("servicelist")&& <h1>Service List</h1> 
+          pathname.includes("myprofile")&& <h1>Dashboard</h1> 
          }
          {
-          pathname.includes("addservice")&& <h1>Add Service</h1>
+          pathname.includes("addFacility")&& <h1>AddFacility</h1> 
+         }
+         {
+          pathname.includes("AllFacility")&& <h1>AllFacility</h1>
          }
       
          {

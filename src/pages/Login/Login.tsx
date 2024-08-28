@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useLoginMutation} from '../../redux/api/authApi/authApi';
-import { useAppDispatch } from '../../redux/hook';
-import { setToken, setUser } from '../../redux/features/userSlice';
+import { useAppDispatch, useAppSelector } from '../../redux/hook';
+import { logout, setToken, setUser } from '../../redux/features/userSlice';
 import { jwtDecode } from "jwt-decode";
+import { RootState } from '@reduxjs/toolkit/query';
 
 
 const Login = () => {
@@ -22,13 +23,13 @@ const Login = () => {
         handleSubmit,
       } = useForm();
       
- 
-  
-   
+     
+    
    
     const onSubmit = async (data: any) => {
-  
-    
+     
+ 
+         
       const res = await login(data);
         
         

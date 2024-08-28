@@ -13,6 +13,8 @@ import Myprofile from "@/pages/Dashboard/Myprofile";
 import AddFacility from "@/pages/Dashboard/AddFacility/AddFacility";
 import DeleteFacility from "@/pages/Dashboard/DeleteFacility/DeleteFacility";
 import UpdateFacility from "@/pages/Dashboard/UpdateFacility/UpdateFacility";
+import MakeAdmin from "@/pages/Dashboard/MakeAdmin/MakeAdmin";
+import AdminRoute from "./AdminRoute";
 export const router =createBrowserRouter([
     {
 
@@ -71,7 +73,11 @@ export const router =createBrowserRouter([
      },
      {
         path:'/dashboard/updatedfac/:id',
-        element:<UpdateFacility/>
+        element:<AdminRoute><UpdateFacility/></AdminRoute>
+     },
+     {
+        path:'makeadmin',
+        element:<AdminRoute> <MakeAdmin/></AdminRoute>
      }
        
           
