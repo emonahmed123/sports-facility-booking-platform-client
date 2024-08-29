@@ -26,8 +26,14 @@ Your sports facility platform is designed to revolutionize the way individuals a
 
 ## Technology Stack
 
-- List of technologies, frameworks, and tools used in the project.
-- Example: React, Redux, Node.js, MongoDB, etc.
+- Frontend: React, Redux Toolkit, Tailwind CSS, Vite
+- Backend: Node.js, Express.js, Mongoose
+- Database: MongoDB
+- State Management: Redux Persist for token and user data storage
+- API Communication: RTK Query for efficient data fetching and caching
+- Authentication & Authorization: JWT (JSON Web Token)
+- Payment Gateway: SSL Commerz integration for secure transactions
+- Version Control: Git and GitHub for source code management
 
 ## Installation Guideline
 
@@ -39,8 +45,13 @@ Instructions on how to install, configure, and get the project running locally.
 
 ### Installation Steps
 
-1. Step-by-step instructions on how to install the project.
-2. Provide code examples or commands for clarity.
+#### Follow these step-by-step instructions to install and set up the sports facility platform on your local machine.
+
+1. Clone the Repository
+
+```git clone https://github.com/your-username/sports-facility-platform.git
+   cd sports-facility-platform
+```
 
 ### Configuration
 
