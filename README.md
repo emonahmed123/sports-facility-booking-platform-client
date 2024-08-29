@@ -50,7 +50,7 @@ Instructions on how to install, configure, and get the project running locally.
 1. Clone the Repository
 
 ```
-git clone https://github.com/your-username/sports-facility-platform.git
+git clone https://github.com/emonahmed123/sports-facility-booking-platform-client.git
 
 cd sports-facility-platform
 ```
@@ -60,23 +60,36 @@ cd sports-facility-platform
 Frontend:
 
 ```bash
-Copy code
 cd Sports-Facility-client
 npm install
 ```
 
-### Configuration
+3. Set Up Environment Variables
 
-1. Create a `.env` file in the root directory of the project.
-2. Add necessary configuration variables in the `.env` file.
-   Example:
-   ```bash
-    PORT=3000
-    DB_URL=your_db_connection_uri
-    API_KEY=your_api_key_here
-   ```
-3. Explain any specific configuration requirements or variables used in your project.
+Create a .env file in both the Sports-Facility-client and Sports-Facility-server directories and add the necessary environment variables:
 
-## Usage
+Frontend (Sports-Facility-client/.env)
 
-Instructions or examples for using the project. Include screenshots or code snippets if applicable.
+```bash
+
+VITE_API_URL=http://localhost:5000/api
+
+```
+
+Run the Frontend
+
+Navigate to the frontend directory and start the development server:
+
+```
+bash
+Copy code
+cd ../Sports-Facility-client
+npm run dev
+```
+
+## Admin
+
+```
+emons@gmail.com
+123456
+```
