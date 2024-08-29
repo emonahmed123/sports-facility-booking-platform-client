@@ -1,9 +1,3 @@
-<div align="center">
-  <h1>Comprehensive Project README Template</h1>
-</div>
-
----
-
 # Sports Facility Booking Platform
 
 ## Introduction
@@ -16,8 +10,19 @@ Your sports facility platform is designed to revolutionize the way individuals a
 
 ## Features
 
-- List of key features or functionalities.
-- Bullet points are helpful for clarity.
+- Seamless Facility Booking: Users can effortlessly book sports facilities by selecting from available time slots, ensuring they secure their preferred venue with ease.
+
+- Secure Payments: Integration with SSL Commerz provides a secure and reliable payment gateway, allowing users to complete transactions with confidence.
+
+- Booking Management: Users have the flexibility to cancel their bookings directly through the platform, offering convenience and control over their scheduled activities.
+
+- Transparent Pricing: Users can view detailed pricing for their bookings, ensuring they are fully informed of costs before finalizing their reservations.
+
+- Dedicated Dashboards: The platform offers separate dashboards for users and administrators, tailored to their specific needs and functionalities.
+
+- Comprehensive Admin Controls: Administrators have full control over facility management, including the ability to add, update, and delete facilities, ensuring the platform remains current and relevant.
+
+- Role Management: Administrators can create and assign new admin roles, allowing for efficient delegation and management of platform operations.
 
 ## Technology Stack
 
