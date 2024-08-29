@@ -49,8 +49,20 @@ Instructions on how to install, configure, and get the project running locally.
 
 1. Clone the Repository
 
-```git clone https://github.com/your-username/sports-facility-platform.git
-   cd sports-facility-platform
+```
+git clone https://github.com/your-username/sports-facility-platform.git
+
+cd sports-facility-platform
+```
+
+2.Install Dependencies
+
+Frontend:
+
+```bash
+Copy code
+cd Sports-Facility-client
+npm install
 ```
 
 ### Configuration
