@@ -5,9 +5,23 @@ import { MdDashboard } from "react-icons/md";
 // import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart} from "react-icons/fa";
 import { useGetMeQuery } from "@/redux/api/authApi/authApi";
 import Loading from "../Loading";
+import { useAppSelector } from "@/redux/hook";
+import { RootState } from "@/redux/store";
+import { useState } from "react";
+import { DiVim } from "react-icons/di";
 
 const DashBoard = () => {
-    const {pathname}=useLocation()
+   
+  const [isAdmin,setAdmin]=useState(false)
+  const { user } = useAppSelector((state:RootState) => state.user)
+
+  
+
+  
+  
+  const {pathname}=useLocation()
+
+    
   
     const {
       data:me,
@@ -75,25 +89,37 @@ const DashBoard = () => {
    
     <ul className="menu p-3   font-normal font-Poppis  bg-[#9260E2] min-h-screen">
     <div>
-        <Link to="/home">   <img className='w-24 mb-10 mx-5 mt-5' src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/N8lApmzhKXbK5HA7kTpU1702703250.svg"/></Link>
+        <Link to="/">   <img className='w-24 mb-10 mx-5 mt-5' src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/N8lApmzhKXbK5HA7kTpU1702703250.svg"/></Link>
  
     </div>
 
+ 
+    {
+  user?.role==='admin' ? '' : <> 
+ <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/mybooking"> <AiOutlineShoppingCart/>
+ <span className="text-[16px]">mybooking</span>   </Link></li>
+ </>
+ }
 
-           
+
+    <li>  <Link to='/dashboard/myprofile'> 
+    <MdDashboard /><span className="text-[16px]">Dashboard</span></Link> </li>
 
 
-       <li className='text-[#FFF] text-[20px] py-2' > <Link to='/dashboard/myprofile'> 
-       <MdDashboard /><span className="text-[16px]">Dashboard</span></Link></li>
-       <li className='text-[#FFF] text-[20px] py-2' > <Link to='/dashboard/addFacility'> 
-       <AiFillShopping/><span className="text-[16px]">Facility  Add</span></Link></li>
-      <li className='text-[#FFF] text-[20px] py-2'><Link to='/dashboard/AllFacility'><AiOutlinePlus/> <span className="text-[16px]"> All Facility</span></Link>   </li>
-       <li className='text-[#FFF] text-[20px] py-2'><Link to="/dashboard/makeadmin"><AiOutlineUserAdd/> <span className="text-[16px]">Make Admin</span>   </Link></li>
-      
-       <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/ordercomfir"> <AiOutlineShoppingCart/>
-       <span className="text-[16px]">All bookings </span>   </Link></li>
-      
-   
+     {
+      user?.role==='admin'  && <>
+      <li className='text-[#FFF] text-[20px] py-2' > <Link to='/dashboard/addFacility'> 
+      <AiFillShopping/><span className="text-[16px]">Facility  Add</span></Link></li>
+     <li className='text-[#FFF] text-[20px] py-2'><Link to='/dashboard/AllFacility'><AiOutlinePlus/> <span className="text-[16px]"> All Facility</span></Link>   </li>
+      <li className='text-[#FFF] text-[20px] py-2'><Link to="/dashboard/makeadmin"><AiOutlineUserAdd/> <span className="text-[16px]">Make Admin</span>   </Link></li>
+     
+      <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/allBooking"> <AiOutlineShoppingCart/>
+      <span className="text-[16px]">All bookings </span>   </Link></li>
+      <li className='text-[#FFF] text-[20px] py-2' > <Link to="/dashboard/mybooking"> <AiOutlineShoppingCart/>
+      <span className="text-[16px]">mybooking</span>   </Link></li>
+     
+   </> 
+     }
       
     </ul>
     

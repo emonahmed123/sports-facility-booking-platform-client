@@ -7,7 +7,7 @@ import { ReactNode } from "react";
 
   
 
-const PrivateRoute = ( {children}) => {
+const PrivateRoute = ( {children}: { children: ReactNode }) => {
     const location = useLocation();
     const { user } = useAppSelector((state:RootState) => state.user);
     console.log(user)

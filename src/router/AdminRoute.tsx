@@ -4,7 +4,7 @@ import { RootState } from '@/redux/store';
 import  { ReactNode } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 
-const AdminRoute = ({children}) => {
+const AdminRoute = ({children}:{ children: ReactNode }) => {
     const location = useLocation();
     const { user } = useAppSelector((state:RootState) => state.user);
     

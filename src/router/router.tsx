@@ -16,6 +16,8 @@ import UpdateFacility from "@/pages/Dashboard/UpdateFacility/UpdateFacility";
 import MakeAdmin from "@/pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "./AdminRoute";
 import AboutUs from "@/pages/AboutUs/AboutUs";
+import AllBooking from "@/pages/Dashboard/AllBooking/AllBooking";
+import MyBooking from "@/pages/Dashboard/MyBooking/MyBooking";
 export const router =createBrowserRouter([
     {
 
@@ -83,6 +85,14 @@ export const router =createBrowserRouter([
      {
         path:'makeadmin',
         element:<AdminRoute> <MakeAdmin/></AdminRoute>
+     },
+     {
+        path:'allBooking',
+        element:<AdminRoute> <AllBooking/></AdminRoute>
+     },
+     {
+        path:'mybooking',
+        element:<PrivateRoute> <MyBooking/></PrivateRoute>
      }
        
           
