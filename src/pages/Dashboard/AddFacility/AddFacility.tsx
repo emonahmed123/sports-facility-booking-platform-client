@@ -1,18 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { usePostSingleFacilityMutation } from "@/redux/api/facilitesApi/facilitesApi";
-import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const AddFacility = () => {
-
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [facility, { isSuccess, isError, error }] =
-    usePostSingleFacilityMutation();
+  const [facility, { isError, error }] = usePostSingleFacilityMutation();
   const onSubmit = async (data: any) => {
     // console.log(data);
     const pureData = {
@@ -20,6 +18,7 @@ const AddFacility = () => {
       description: data?.description,
       pricePerHour: Number(data?.price),
       location: data?.location,
+      image: data?.image,
     };
 
     const res = await facility(pureData);
@@ -36,8 +35,9 @@ const AddFacility = () => {
   };
 
   if (isError) {
+    console.log(error);
     if (error.data) {
-//  console.log(error.data)
+      //  console.log(error.data)
 
       Swal.fire({
         icon: "error",
@@ -74,7 +74,7 @@ const AddFacility = () => {
               maxLength: 20,
             })}
             type="name"
-            placeholder=" Parts Name"
+            placeholder=" Name"
             className="input input-bordered w-full max-w-xs"
           />
 
@@ -136,7 +136,7 @@ const AddFacility = () => {
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
-            <span className="label-text text-bold">PhotoUrl</span>
+            <span className="label-text text-bold">location</span>
           </label>
           <input
             {...register("location", {
@@ -153,6 +153,29 @@ const AddFacility = () => {
             {errors.location?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.location.message}
+              </span>
+            )}
+          </label>
+        </div>
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
+            <span className="label-text text-bold">PhotoUrl</span>
+          </label>
+          <input
+            {...register("image", {
+              required: {
+                value: false,
+                message: "image is Required",
+              },
+            })}
+            type="text"
+            placeholder="image"
+            className="input input-bordered w-full max-w-xs"
+          />
+          <label className="label">
+            {errors.location?.type === "required" && (
+              <span className="label-text-alt text-red-500">
+                {errors.image.message}
               </span>
             )}
           </label>

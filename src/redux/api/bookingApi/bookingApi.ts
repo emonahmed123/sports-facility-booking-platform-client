@@ -9,6 +9,7 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       providesTags: ["book"],
     }),
+
     getmyBooking: builder.query({
       query: () => ({
         url: `/bookings/user`,
@@ -16,9 +17,9 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       providesTags: ["book"],
     }),
-    postSingleFacility: builder.mutation({
+    PostBooking: builder.mutation({
       query: (Info) => ({
-        url: "/facility",
+        url: "/bookings",
         method: "POST",
         body: Info,
       }),
@@ -31,13 +32,11 @@ const bookingApi = baseApi.injectEndpoints({
       }),
       invalidatesTags: ["book"],
     }),
-    UpdateSingleFacility: builder.mutation({
-      query: (pureData) => ({
-        url: `/facility/${pureData.id}`,
-        method: "PUT",
-        body: pureData.data,
+    availableSlots: builder.query({
+      query: (data) => ({
+        url: `/check-availability?date=${data.startDate}&facility=${data._id}`,
+        method: "GET",
       }),
-      invalidatesTags: ["fac"],
     }),
   }),
 });
@@ -46,4 +45,6 @@ export const {
   useGetAllBookingQuery,
   useGetmyBookingQuery,
   useDeletedBookingMutation,
+  useAvailableSlotsQuery,
+  usePostBookingMutation,
 } = bookingApi;

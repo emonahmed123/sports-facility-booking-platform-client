@@ -9,7 +9,6 @@ const FeaturedFacilities = () => {
     isLoading,
     isError,
     error,
-    isSuccess,
   } = useGetFacilityQuery(undefined);
 
   if (isLoading) {

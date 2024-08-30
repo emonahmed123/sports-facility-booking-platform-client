@@ -246,7 +246,6 @@ const Singup = () => {
                 </Link>{" "}
               </small>{" "}
             </p>
-           
           </div>
         </div>
       </div>
