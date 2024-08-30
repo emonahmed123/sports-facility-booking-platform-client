@@ -89,23 +89,46 @@ const navbar = () => {
           </li>
           <li>
             {" "}
-            <Link to="/" className="py-7 px-3 inline-block">
+            <Link to="/contac" className="py-7 px-3 inline-block">
               Contact Us
             </Link>
           </li>
           <li>
             {" "}
-            <Link to="/" className="py-7 px-3 inline-block">
+            <Link to="/AboutUs" className="py-7 px-3 inline-block">
               About us
             </Link>
           </li>
+          <li>
+            {token ? (
+              <Link to="/dashboard/myprofile" className="py-7 px-3 inline-block">
+                Dashboard
+              </Link>
+            ) : (
+              ""
+            )}
+          </li>
           {/* <NavLinks /> */}
           <div className="py-5">
-            <Link to="">
-              <button className="bg-[#3d85ff] text-white  px-6 py-2 rounded-full">
-                Login
-              </button>
-            </Link>
+            {token ? (
+              <>
+                <button
+                  onClick={handleLogout}
+                  className=" bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full"
+                >
+                  LogOut
+                </button>
+              </>
+            ) : (
+              <>
+                {" "}
+                <Link to="/login">
+                  <button className="bg-[rgb(61,133,255)] text-white  px-6 py-2 rounded-full">
+                    Login
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
         </ul>
       </div>

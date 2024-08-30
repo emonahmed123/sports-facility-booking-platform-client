@@ -37,6 +37,7 @@ const bookingApi = baseApi.injectEndpoints({
         url: `/check-availability?date=${data.startDate}&facility=${data._id}`,
         method: "GET",
       }),
+      providesTags: ["book"],
     }),
   }),
 });
