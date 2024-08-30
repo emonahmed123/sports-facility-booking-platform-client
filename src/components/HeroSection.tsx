@@ -1,7 +1,6 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../redux/hook";
-import { RootState } from "@reduxjs/toolkit/query";
+
 
 const HeroSection = () => {
   return (

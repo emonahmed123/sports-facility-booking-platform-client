@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { useGetSingleFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
-import React from "react";
+
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "./Loading";
 
@@ -11,11 +13,11 @@ const FacilityDetail = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const { _id, name, description, pricePerHour, location, image } =
+  const { name, description, pricePerHour, location, image } =
     facility.data;
 
-  const NavigaetBook = (id: string) => {
-    navigate(`/booking/${id}`);
+  const NavigaetBook = (_id: string) => {
+    navigate(`/booking/${_id}`);
   };
 
   return (
@@ -49,7 +51,7 @@ const FacilityDetail = () => {
 
         <div className="font-Poppis  font-semibold">
           <button
-            onClick={() => NavigaetBook(id)}
+            onClick={() => NavigaetBook(id as any)}
             className="bg-[#E9ECF0] w-full py-[10px] rounded-[7px] text-[14px] "
           >
             Book Now

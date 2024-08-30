@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react-hooks/rules-of-hooks */
+
 import Loading from "@/components/Loading";
 import {
   useGetSingleFacilityQuery,
@@ -14,12 +14,11 @@ const UpdateFacility = () => {
 
   const { data: facility, isLoading } = useGetSingleFacilityQuery(id);
 
-  const [UpdateFacility, { isError, error }] =
+  const [UpdateFacility, { isError }] =
     useUpdateSingleFacilityMutation();
 
   const {
     register,
-    formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
@@ -61,23 +60,13 @@ const UpdateFacility = () => {
   };
 
   if (isError) {
-    if (error?.data) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: `${error?.data.message}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else if (error?.status) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: `${error?.status}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Something is worng Facility Not Update!",
+      showConfirmButton: false,
+      timer: 1500,
+    })
   }
 
   return (
@@ -100,21 +89,21 @@ const UpdateFacility = () => {
               className="input input-bordered w-full max-w-xs"
             />
 
-            <label className="label">
+            {/* <label className="label">
               {errors.name?.type === "required" && (
                 <span className="label-text-alt text-red-500">
                   {errors.name.message}
                 </span>
               )}
-            </label>
+            </label> */}
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text text-bold">Description</span>
             </label>
             <input
-              {...register("description", {})}
-              type=""
+              {...register("description")}
+              type="text"
               placeholder="Description"
               className="input input-bordered w-full max-w-xs"
             />

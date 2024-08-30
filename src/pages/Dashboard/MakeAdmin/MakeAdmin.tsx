@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMAkeAdminMutation } from "@/redux/api/authApi/authApi";
-import React from "react";
+
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+
 import Swal from "sweetalert2";
 
 const MakeAdmin = () => {
@@ -10,11 +10,11 @@ const MakeAdmin = () => {
 
   const {
     register,
-    formState: { errors },
+
     handleSubmit,
     reset,
   } = useForm();
-
+  // const typedErrors = errors as FieldErrors<FieldValues>;
   const onSubmit = async (data: any) => {
     const allData = {
       name: data?.name,
@@ -39,13 +39,12 @@ const MakeAdmin = () => {
     }
 
     if (res.error) {
-      const ErrorMassage = res.error?.data?.errorSources[0].message;
-      // console.log(ErrorMassage);
+
 
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: `${ErrorMassage}`,
+        text: "Something worng Admin Not create",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -78,13 +77,13 @@ const MakeAdmin = () => {
                   placeholder="Your Name"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
-                  {errors.name?.type === "required" && (
+                {/* <label className="label">
+                  {typedErrors.name?.type === "required" && TypeError.name?.message && (
                     <span className="label-text-alt text-red-500">
-                      {errors.name.message}
+                      {TypeError.name.message}
                     </span>
                   )}
-                </label>
+                </label>  */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -107,18 +106,18 @@ const MakeAdmin = () => {
                   placeholder="Your Email"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
-                  {errors.email?.type === "required" && (
+                {/* <label className="label">
+                  {typedErrors.email.type === "required" && (
                     <span className="label-text-alt text-red-500">
-                      {errors.email.message}
+                      {typedErrors.email.message}
                     </span>
                   )}
-                  {errors.email?.type === "pattern" && (
+                  {typedErrors.email?.type === "pattern" && (
                     <span className="label-text-alt text-red-500">
-                      {errors.email.message}
+                      {typedErrors?.email.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -141,18 +140,18 @@ const MakeAdmin = () => {
                   placeholder="You password"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
-                  {errors.password?.type === "required" && (
+                {/* <label className="label">
+                  {typedErrors.password?.type === "required" && (
                     <span className="label-text-alt text-red-500">
-                      {errors.password.message}
+                      {typedErrors?.password.message}
                     </span>
                   )}
-                  {errors.password?.type === "minLength" && (
+                  {typedErrors.password?.type === "minLength" && (
                     <span className="label-text-alt text-red-500">
-                      {errors.password.message}
+                      {typedErrors?.password.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -176,18 +175,18 @@ const MakeAdmin = () => {
                   placeholder="You phone Number"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
-                  {errors.phone?.type === "required" && (
+                {/* <label className="label">
+                  {TypeError.phone?.type === "required" && (
                     <span className="label-text-alt text-red-500">
-                      {errors?.phone.message}
+                      {typedErrors?.phone.message}
                     </span>
                   )}
                   {errors.number?.type === "minLength" && (
                     <span className="label-text-alt text-red-500">
-                      {errors.phone.message}
+                      {typedErrors?.phone.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -196,7 +195,7 @@ const MakeAdmin = () => {
                     Address <sup>*</sup>
                   </span>
                 </label>
-                <input
+                {/* <input
                   {...register("address", {
                     required: {
                       value: true,
@@ -208,12 +207,12 @@ const MakeAdmin = () => {
                   className="input input-bordered w-full max-w-xs"
                 />
                 <label className="label">
-                  {errors.address?.type === "required" && (
+                  {typedErrors.address?.type === "required" && typedErrors.address.message && (
                     <span className="label-text-alt text-red-500">
-                      {errors?.address.message}
+                      {typedErrors.address.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
 
               {isLoading ? (

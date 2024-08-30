@@ -1,5 +1,5 @@
 import Lottie from "lottie-react";
-import React from "react";
+
 import mission from "@/assets/mission.json";
 import purpose from "@/assets/purpose.json";
 const Misson = () => {

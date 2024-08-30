@@ -1,22 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import Loading from "@/components/Loading";
 import {
   useDeletedBookingMutation,
   useGetmyBookingQuery,
 } from "@/redux/api/bookingApi/bookingApi";
-import React from "react";
+
 import { FaTrashAlt } from "react-icons/fa";
-import DeleteFacility from "../DeleteFacility/DeleteFacility";
+
 import Swal from "sweetalert2";
 
 const MyBooking = () => {
-  const { data: MyBooking, isLoading } = useGetmyBookingQuery(undefined);
-  const [deleteBooking, { isLoading: isDeleting }] =
+  const { data: MyBooking, isLoading, isError } = useGetmyBookingQuery(undefined);
+  const [deleteBooking,] =
     useDeletedBookingMutation();
   //    console.log(MyBooking)
 
   if (isLoading) {
     return <Loading />;
+  }
+  if (isError) {
+    return <p className="text-center text-[20px]">You are Admin You have No acces is this route </p>
   }
 
   const handleDeleteItem = (item: any) => {
@@ -67,7 +71,7 @@ const MyBooking = () => {
 
   return (
     <div>
-      {MyBooking.data.length > 0 ? (
+      {MyBooking?.data?.length > 0 ? (
         <p className="text-center">MY Booking</p>
       ) : (
         <p className="text-center"> Please Booking !</p>
@@ -91,7 +95,7 @@ const MyBooking = () => {
               </tr>
             </thead>
             <tbody>
-              {MyBooking?.data.map((item: any, index: any) => (
+              {MyBooking?.data?.map((item: any, index: any) => (
                 <tr key={item._id}>
                   <td>{index + 1}</td>
                   <td>{item?.facility.name}</td>

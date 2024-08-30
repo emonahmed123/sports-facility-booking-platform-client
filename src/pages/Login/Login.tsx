@@ -1,6 +1,7 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unsafe-optional-chaining */
-import { FieldErrors, FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useLoginMutation } from "../../redux/api/authApi/authApi";
@@ -16,13 +17,15 @@ const Login = () => {
 
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const typedErrors = errors as FieldErrors<FieldValues>;
+  // const typedErrors = errors as FieldErrors<FieldValues>;
 
   const onSubmit = async (data: any) => {
+
+
     const res = await login(data);
 
     if (res.data) {
@@ -43,20 +46,16 @@ const Login = () => {
       });
       navigate("/");
     }
-
-    if (res.error) {
-      const ErrorMassage =
-        res.error?.data?.errorSources[0].message || "Server Dwon";
-      console.log(ErrorMassage);
-
+    else {
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: `${ErrorMassage}`,
-        showConfirmButton: false,
-        timer: 1500,
+        text: `something is worng`,
+
       });
     }
+
+
   };
 
   return (
@@ -99,16 +98,16 @@ const Login = () => {
                   className="input input-bordered w-full max-w-xs"
                 />
                 <label className="label">
-                  {typedErrors?.email?.type === "required" && (
+                  {/* {typedErrors?.email?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {typedErrors?.email.message}
                     </span>
-                  )}
-                  {typedErrors?.email?.type === "pattern" && (
+                  )} */}
+                  {/* {typedErrors?.email?.type === "pattern" && (
                     <span className="label-text-alt text-red-500">
                       {typedErrors?.email.message}
                     </span>
-                  )}
+                  )} */}
                 </label>
               </div>
               <div className="form-control w-full max-w-xs">
@@ -133,16 +132,16 @@ const Login = () => {
                   className="input input-bordered w-full max-w-xs"
                 />
                 <label className="label">
-                  {typedErrors.password?.type === "required" && (
+                  {/* {typedErrors.password?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {typedErrors?.password.message}
                     </span>
-                  )}
-                  {typedErrors?.password?.type === "minLength" && (
+                  )} */}
+                  {/* {typedErrors?.password?.type === "minLength" && (
                     <span className="label-text-alt text-red-500">
                       {typedErrors?.password.message}
                     </span>
-                  )}
+                  )} */}
                 </label>
               </div>
 

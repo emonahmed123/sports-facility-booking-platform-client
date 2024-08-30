@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignUPMutation } from "../../redux/api/authApi/authApi";
@@ -7,7 +8,7 @@ const Singup = () => {
 
   const {
     register,
-    formState: { errors },
+
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
@@ -37,13 +38,13 @@ const Singup = () => {
     }
 
     if (res.error) {
-      const ErrorMassage = res.error?.data?.errorSources[0].message;
-      // console.log(ErrorMassage);
+
+      console.log(res.error);
 
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: `${ErrorMassage}`,
+        text: `${res.error}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -85,13 +86,13 @@ const Singup = () => {
                   placeholder="Your Name"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
+                {/* <label className="label">
                   {errors.name?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {errors.name.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -114,7 +115,7 @@ const Singup = () => {
                   placeholder="Your Email"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
+                {/* <label className="label">
                   {errors.email?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {errors.email.message}
@@ -125,7 +126,7 @@ const Singup = () => {
                       {errors.email.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -148,7 +149,7 @@ const Singup = () => {
                   placeholder="You password"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
+                {/* <label className="label">
                   {errors.password?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {errors.password.message}
@@ -159,7 +160,7 @@ const Singup = () => {
                       {errors.password.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -183,7 +184,7 @@ const Singup = () => {
                   placeholder="You phone Number"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
+                {/* <label className="label">
                   {errors.phone?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {errors?.phone.message}
@@ -194,7 +195,7 @@ const Singup = () => {
                       {errors.phone.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -214,13 +215,13 @@ const Singup = () => {
                   placeholder="You phone Number"
                   className="input input-bordered w-full max-w-xs"
                 />
-                <label className="label">
+                {/* <label className="label">
                   {errors.address?.type === "required" && (
                     <span className="label-text-alt text-red-500">
                       {errors?.address.message}
                     </span>
                   )}
-                </label>
+                </label> */}
               </div>
 
               {isLoading ? (

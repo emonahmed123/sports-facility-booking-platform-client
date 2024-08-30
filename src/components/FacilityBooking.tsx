@@ -1,8 +1,8 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetSingleFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -20,7 +20,7 @@ const FacilityBooking = () => {
   );
 
   const { id } = useParams();
-  const navigate = useNavigate();
+
   const { data: facility, isLoading, isError } = useGetSingleFacilityQuery(id);
   const [booking] = usePostBookingMutation();
   const { _id, name } = facility?.data || {};
@@ -34,7 +34,7 @@ const FacilityBooking = () => {
     });
   const {
     register,
-    formState: { errors },
+    // formState: { errors },
     handleSubmit,
   } = useForm();
 
@@ -49,7 +49,7 @@ const FacilityBooking = () => {
     setSelectedDate(format(date, "yyyy-MM-dd"));
   };
 
-  const typedErrors = errors as FieldErrors<FieldValues>;
+  // const typedErrors = errors as FieldErrors<FieldValues>;
 
   const onSubmit = async (data: any) => {
     const MutionData = { ...data, facility: _id };
@@ -70,12 +70,12 @@ const FacilityBooking = () => {
     }
 
     if (res.error) {
-      const ErrorMassage = res.error?.data?.message || "Server Dwon";
+
 
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: `${ErrorMassage}`,
+        text: "something worng",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -106,7 +106,7 @@ const FacilityBooking = () => {
         <div className="mt-10">
           {availableSlots.data.length > 0 ? (
             <ul className="flex justify-center">
-              {availableSlots.data.map((slot) => (
+              {availableSlots.data.map((slot: { _id: React.Key | null | undefined; startTime: any; endTime: any; }) => (
                 <li
                   className=" text-10px "
                   key={slot._id}
@@ -139,13 +139,13 @@ const FacilityBooking = () => {
                 placeholder="Your Email"
                 className="input input-bordered w-full max-w-xs"
               />
-              <label className="label">
+              {/* <label className="label">
                 {typedErrors?.date?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {typedErrors?.date.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
@@ -164,13 +164,13 @@ const FacilityBooking = () => {
                 placeholder="start password"
                 className="input input-bordered w-full max-w-xs"
               />
-              <label className="label">
+              {/* <label className="label">
                 {typedErrors.startTime?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {typedErrors?.startTime.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
@@ -189,13 +189,13 @@ const FacilityBooking = () => {
                 placeholder="start password"
                 className="input input-bordered w-full max-w-xs"
               />
-              <label className="label">
+              {/* <label className="label">
                 {typedErrors.endTime?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {typedErrors?.endTime.message}
                   </span>
                 )}
-              </label>
+              </label> */}
             </div>
 
             {isLoading ? (

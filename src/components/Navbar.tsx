@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { RootState } from "../redux/store";
 import { logout } from "../redux/features/userSlice";
-
+import { CiMenuFries } from "react-icons/ci";
+import { IoCloseOutline } from "react-icons/io5";
 const navbar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ const navbar = () => {
             className="text-3xl md:hidden cursor-pointer"
             onClick={() => setOpen(!open)}
           >
-            <ion-icon name={`${open ? "close" : "menu"}`}></ion-icon>
+            {open ? <IoCloseOutline /> : <CiMenuFries />}
           </div>
         </div>
         <ul className="md:flex hidden uppercase items-center gap-8 font-">

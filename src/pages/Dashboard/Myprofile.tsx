@@ -1,21 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Loading from "@/components/Loading";
 import { useGetMeQuery } from "@/redux/api/authApi/authApi";
-import { useAppSelector } from "@/redux/hook";
-import { RootState } from "@/redux/store";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Myprofile = () => {
   const navigate = useNavigate();
-  const { data: me, isLoading, isError, error } = useGetMeQuery(undefined);
+  const { data: me, isLoading, isError } = useGetMeQuery(undefined);
 
   if (isError) {
-    const errors = error?.data?.message || "serverDwon";
 
     Swal.fire({
       icon: "error",
       title: "Opps",
-      text: `${errors}`,
+      text: `SomeThing is Worng`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -26,6 +24,8 @@ const Myprofile = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+
   const today = new Date();
   const year = today.getFullYear();
   const month = String(today.getMonth() + 1).padStart(2, "0"); // getMonth() is zero-based
@@ -34,7 +34,7 @@ const Myprofile = () => {
   const formattedDate = `${year}-${month}-${day}`;
 
   const User = me?.data;
-
+  console.log(User)
   return (
     <div className="max-w-[800px] mx-auto bg-[#9260E2] px-5 py-5 rounded-[20px] font-Poppis">
       <p className="text-[16px] leading-[28px] text-[#FFF] mb-10">

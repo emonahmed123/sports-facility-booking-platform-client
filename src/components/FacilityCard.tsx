@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import { useNavigate } from "react-router-dom";
 
-const FacilityCard = (props) => {
+const FacilityCard = (props: { item: { _id: any; name: any; description: any; pricePerHour: any; location: any; image: any; }; }) => {
   // console.log(props)
-  const { _id, name, description, pricePerHour, location, image } = props.item;
+  const { _id, name, pricePerHour, location, image } = props.item;
 
   const navigate = useNavigate();
   const NavigaetFaclility = (_id: string) => {

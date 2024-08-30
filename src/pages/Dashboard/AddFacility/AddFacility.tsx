@@ -6,11 +6,10 @@ import Swal from "sweetalert2";
 const AddFacility = () => {
   const {
     register,
-    formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [facility, { isError, error }] = usePostSingleFacilityMutation();
+  const [facility, { isError, }] = usePostSingleFacilityMutation();
   const onSubmit = async (data: any) => {
     // console.log(data);
     const pureData = {
@@ -35,27 +34,16 @@ const AddFacility = () => {
   };
 
   if (isError) {
-    console.log(error);
-    if (error.data) {
-      //  console.log(error.data)
+    Swal.fire({
+      icon: "error",
+      title: "Error",
+      text: "Something is wrong",
+      showConfirmButton: false,
+      timer: 1500,
+    });
 
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: `${error?.data?.message}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    } else if (error.status) {
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        text: `${error?.status}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
   }
+
 
   return (
     <div className="mx-52">
@@ -78,13 +66,13 @@ const AddFacility = () => {
             className="input input-bordered w-full max-w-xs"
           />
 
-          <label className="label">
+          {/* <label className="label">
             {errors.name?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.name.message}
               </span>
             )}
-          </label>
+          </label> */}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -102,13 +90,13 @@ const AddFacility = () => {
             className="input input-bordered w-full max-w-xs"
           />
 
-          <label className="label">
+          {/* <label className="label">
             {errors.description?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.description.message}
               </span>
             )}
-          </label>
+          </label> */}
         </div>
 
         <div className="form-control w-full max-w-xs">
@@ -126,13 +114,13 @@ const AddFacility = () => {
             placeholder="price"
             className="input input-bordered w-full max-w-xs"
           />
-          <label className="label">
+          {/* <label className="label">
             {errors.price?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.price.message}
               </span>
             )}
-          </label>
+          </label> */}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -149,13 +137,13 @@ const AddFacility = () => {
             placeholder="location"
             className="input input-bordered w-full max-w-xs"
           />
-          <label className="label">
+          {/* <label className="label">
             {errors.location?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.location.message}
               </span>
             )}
-          </label>
+          </label> */}
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -172,13 +160,13 @@ const AddFacility = () => {
             placeholder="image"
             className="input input-bordered w-full max-w-xs"
           />
-          <label className="label">
+          {/* <label className="label">
             {errors.location?.type === "required" && (
               <span className="label-text-alt text-red-500">
                 {errors.image.message}
               </span>
             )}
-          </label>
+          </label> */}
         </div>
         <div className="form-control w-full max-w-xs">
           <input
@@ -190,6 +178,6 @@ const AddFacility = () => {
       </form>
     </div>
   );
-};
+}
 
 export default AddFacility;

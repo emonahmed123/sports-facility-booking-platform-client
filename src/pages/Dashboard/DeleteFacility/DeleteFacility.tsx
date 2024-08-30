@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 const DeleteFacility = () => {
   const { data: facility, isLoading } = useGetFacilityQuery(undefined);
 
-  const [deleteFacility, { isLoading: isDeleting }] =
+  const [deleteFacility] =
     useDeletedSingleFacilityMutation();
 
   const handleDeleteItem = (item: any) => {
@@ -29,7 +29,7 @@ const DeleteFacility = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await deleteFacility(item._id).unwrap();
+          await deleteFacility(item._id).unwrap();
 
           const Toast = Swal.mixin({
             toast: true,
@@ -47,7 +47,7 @@ const DeleteFacility = () => {
             title: `Delete ${item?.name}  successfully`,
           });
         } catch (error) {
-          console.error("Delete failed:", error?.error);
+          console.error("Delete failed:", error);
 
           Swal.fire({
             position: "top",

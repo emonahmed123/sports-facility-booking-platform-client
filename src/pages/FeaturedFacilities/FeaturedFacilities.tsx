@@ -1,14 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import FacilityCard from "@/components/FacilityCard";
 import Loading from "@/components/Loading";
 import { useGetFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
-import Swal from "sweetalert2";
+
 
 const FeaturedFacilities = () => {
   const {
     data: facility,
     isLoading,
     isError,
-    error,
+
   } = useGetFacilityQuery(undefined);
 
   if (isLoading) {
@@ -29,12 +30,13 @@ const FeaturedFacilities = () => {
   // }
 
   if (isError) {
-    const ErrorMassage = error?.error?.data?.errorSources[0].message;
+    // const ErrorMassage = error?.error?.data?.errorSources[0].message;
     // console.log(facility);
+
     return (
       <p className="text-[30px] text-center py-5 text-red-600">
-        {" "}
-        {ErrorMassage || "CONNECTION_REFUSED"}
+
+        "something"
       </p>
     );
   }
@@ -47,7 +49,7 @@ const FeaturedFacilities = () => {
           OUR Featured <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10 ">
-          {facility?.data?.map((item) => (
+          {facility?.data?.map((item: any) => (
             <FacilityCard item={item} key={item.index}></FacilityCard>
           ))}
         </div>
