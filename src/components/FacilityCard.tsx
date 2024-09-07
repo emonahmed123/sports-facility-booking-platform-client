@@ -14,7 +14,7 @@ const FacilityCard = (props: { item: { _id: any; name: any; description: any; pr
 
   return (
     <div>
-      <div className="max-w-[370px] relative px-2 py-2 bg-[#f5f8fc] rounded-[9px] border  border-[#D4D8DE] font-Poppis">
+      <div className="max-w-[370px] relative px-2 py-2 bg-[#f5f8fc] mx-auto rounded-[9px] border  border-[#D4D8DE] font-Poppis">
         <img
           className="mb-5 w-full object-cover h-[200px]"
           loading="lazy"

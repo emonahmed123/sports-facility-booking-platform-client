@@ -3,54 +3,63 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useSignUPMutation } from "../../redux/api/authApi/authApi";
 import Swal from "sweetalert2";
+import { getErrorMessage } from "@/utils/hookErrorHandle";
+import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
+import { useState } from "react";
 const Singup = () => {
   const [signUp, { isLoading }] = useSignUPMutation();
-
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
   const {
     register,
-
+    formState: { errors },
     handleSubmit,
   } = useForm();
   const navigate = useNavigate();
   const onSubmit = async (data: any) => {
-    const allData = {
-      name: data?.name,
-      password: data?.password,
-      email: data?.email,
-      role: "user",
-      address: data?.address,
-      phone: data?.phone,
-    };
+    try {
+      const allData = {
+        name: data?.name,
+        password: data?.password,
+        email: data?.email,
+        role: "user",
+        address: data?.address,
+        phone: data?.phone,
+      };
 
-    const res = await signUp(allData);
+      const res = await signUp(allData).unwrap()
+      console.log(res)
 
-    if (res.data) {
-      const Success = res?.data?.message;
+      if (res) {
+        const Success = res.message;
 
-      Swal.fire({
-        icon: "success",
-        title: "success",
-        text: `${Success}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/login");
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: `${Success}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      }
     }
-
-    if (res.error) {
-
-      console.log(res.error);
+    catch (error: any) {
+      console.log(
+        error
+      )
 
       Swal.fire({
         icon: "error",
-        title: "Opps",
-        text: `${res.error}`,
+        title: "SingUp Failed",
+        text: `${error?.data?.
+          errorSources[0].message || 'Internal Servre Error'}`,
         showConfirmButton: false,
         timer: 1500,
       });
     }
-  };
-
+  }
   return (
     <section className="py-[20px] ">
       <p className="pt-5 pl-5 font-Poppis">
@@ -86,13 +95,13 @@ const Singup = () => {
                   placeholder="Your Name"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {errors.name?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "name") && (
                     <span className="label-text-alt text-red-500">
-                      {errors.name.message}
+                      {getErrorMessage(errors, "name")}
                     </span>
                   )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -115,18 +124,13 @@ const Singup = () => {
                   placeholder="Your Email"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {errors.email?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "email") && (
                     <span className="label-text-alt text-red-500">
-                      {errors.email.message}
+                      {getErrorMessage(errors, "email")}
                     </span>
                   )}
-                  {errors.email?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.email.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -145,22 +149,28 @@ const Singup = () => {
                       message: "Must be 6 characters or longer",
                     },
                   })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   placeholder="You password"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {errors.password?.type === "required" && (
+                <span
+                  className=" text-gray-400 absolute right-10 bottom-2 px-2 flex items-center cursor-pointer   h-full"
+                  onClick={togglePasswordVisibility}
+                >
+                  {passwordVisible ? (
+                    <RxEyeOpen className="w-5 h-5  " />
+                  ) : (
+                    <RxEyeClosed className="w-5 h-5 " />
+                  )}
+                </span>
+
+                <label className="label">
+                  {getErrorMessage(errors, "password") && (
                     <span className="label-text-alt text-red-500">
-                      {errors.password.message}
+                      {getErrorMessage(errors, "password")}
                     </span>
                   )}
-                  {errors.password?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.password.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -177,25 +187,20 @@ const Singup = () => {
 
                     minLength: {
                       value: 11,
-                      message: "Must be 6 characters or longer",
+                      message: "Must be 11 characters or longer",
                     },
                   })}
                   type="phone"
                   placeholder="You phone Number"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {errors.phone?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "phone") && (
                     <span className="label-text-alt text-red-500">
-                      {errors?.phone.message}
+                      {getErrorMessage(errors, "phone")}
                     </span>
                   )}
-                  {errors.number?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.phone.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -211,17 +216,17 @@ const Singup = () => {
                       message: " Address is Required",
                     },
                   })}
-                  type="phone"
-                  placeholder="You phone Number"
+                  type="address"
+                  placeholder="You address"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {errors.address?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "address") && (
                     <span className="label-text-alt text-red-500">
-                      {errors?.address.message}
+                      {getErrorMessage(errors, "address")}
                     </span>
                   )}
-                </label> */}
+                </label>
               </div>
 
               {isLoading ? (
@@ -253,5 +258,6 @@ const Singup = () => {
     </section>
   );
 };
+
 
 export default Singup;

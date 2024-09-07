@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useMAkeAdminMutation } from "@/redux/api/authApi/authApi";
+import { getErrorMessage } from "@/utils/hookErrorHandle";
 
 import { useForm } from "react-hook-form";
 
@@ -10,7 +11,7 @@ const MakeAdmin = () => {
 
   const {
     register,
-
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
@@ -44,7 +45,7 @@ const MakeAdmin = () => {
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: "Something worng Admin Not create",
+        text: "Something Worng Admin Not create",
         showConfirmButton: false,
         timer: 1500,
       });
@@ -77,13 +78,13 @@ const MakeAdmin = () => {
                   placeholder="Your Name"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {typedErrors.name?.type === "required" && TypeError.name?.message && (
+                <label className="label">
+                  {getErrorMessage(errors, "name") && (
                     <span className="label-text-alt text-red-500">
-                      {TypeError.name.message}
+                      {getErrorMessage(errors, "name")}
                     </span>
                   )}
-                </label>  */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -106,18 +107,13 @@ const MakeAdmin = () => {
                   placeholder="Your Email"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {typedErrors.email.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "email") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors.email.message}
+                      {getErrorMessage(errors, "email")}
                     </span>
                   )}
-                  {typedErrors.email?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500">
-                      {typedErrors?.email.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -140,18 +136,13 @@ const MakeAdmin = () => {
                   placeholder="You password"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {typedErrors.password?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "password") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors?.password.message}
+                      {getErrorMessage(errors, "password")}
                     </span>
                   )}
-                  {typedErrors.password?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {typedErrors?.password.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -168,25 +159,20 @@ const MakeAdmin = () => {
 
                     minLength: {
                       value: 11,
-                      message: "Must be 6 characters or longer",
+                      message: "Must be 11 characters or longer",
                     },
                   })}
                   type="phone"
                   placeholder="You phone Number"
                   className="input input-bordered w-full max-w-xs"
                 />
-                {/* <label className="label">
-                  {TypeError.phone?.type === "required" && (
+                <label className="label">
+                  {getErrorMessage(errors, "phone") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors?.phone.message}
+                      {getErrorMessage(errors, "phone")}
                     </span>
                   )}
-                  {errors.number?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {typedErrors?.phone.message}
-                    </span>
-                  )}
-                </label> */}
+                </label>
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
@@ -195,24 +181,24 @@ const MakeAdmin = () => {
                     Address <sup>*</sup>
                   </span>
                 </label>
-                {/* <input
+                <input
                   {...register("address", {
                     required: {
                       value: true,
                       message: " Address is Required",
                     },
                   })}
-                  type="phone"
-                  placeholder="You phone Number"
+                  type="address"
+                  placeholder="You address"
                   className="input input-bordered w-full max-w-xs"
                 />
                 <label className="label">
-                  {typedErrors.address?.type === "required" && typedErrors.address.message && (
+                  {getErrorMessage(errors, "address") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors.address.message}
+                      {getErrorMessage(errors, "address")}
                     </span>
                   )}
-                </label> */}
+                </label>
               </div>
 
               {isLoading ? (
@@ -225,7 +211,7 @@ const MakeAdmin = () => {
                 <input
                   className=" btn w-full max-w-xs bg-[#3d85ff] text-[#ffff]"
                   type="submit"
-                  value="SIGN UP"
+                  value="Make Admin"
                 />
               )}
             </form>

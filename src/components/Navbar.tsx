@@ -6,6 +6,7 @@ import { RootState } from "../redux/store";
 import { logout } from "../redux/features/userSlice";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseOutline } from "react-icons/io5";
+import Swal from "sweetalert2";
 const navbar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
@@ -13,11 +14,26 @@ const navbar = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: `Log out successfully`,
+    });
   };
 
   return (
-    <nav className="bg-[#FFFFFF]   border-b">
-      <div className="max-w-[1170px] mx-auto flex items-center font-medium justify-around">
+    <nav className="bg-[#FFFFFF]   border-b ">
+      <div className="max-w-[1170px] mx-auto flex items-center font-medium justify-around ">
         <div className="z-50 p-5 md:w-auto w-full flex justify-between">
           <img
             src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/N8lApmzhKXbK5HA7kTpU1702703250.svg"
@@ -41,9 +57,13 @@ const navbar = () => {
             <Link to="/AboutUs" className="py-7 px-3 inline-block">
               About Us
             </Link>
+
+          </li>
+          <li>
             <Link to="/contac" className="py-7 px-3 inline-block">
               Contact Us
             </Link>
+
           </li>
 
           {token ? (
@@ -79,24 +99,30 @@ const navbar = () => {
         {/* Mobile nav */}
         <ul
           className={`
-      md:hidden bg-white fixed w-full top-0 overflow-y-auto bottom-0 py-24 pl-4
-      duration-500 ${open ? "left-0" : "left-[-100%]"}
+      md:hidden bg-white fixed  z-[99] w-[300px] top-0 overflow-y-auto bottom-0 pt-5 pl-4
+      duration-500 ${open ? "left-0" : "left-[-100%] "}
       `}
+
         >
+          <img
+            src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/N8lApmzhKXbK5HA7kTpU1702703250.svg"
+            alt="logo"
+            className="md:cursor-pointer h-9"
+          />
           <li>
-            <Link to="/" className="py-7 px-3 inline-block">
+            <Link to="/" className="pt-6 pb-3 px-3 inline-block">
               Home
             </Link>
           </li>
           <li>
             {" "}
-            <Link to="/contac" className="py-7 px-3 inline-block">
+            <Link to="/contac" className="py-3 px-3 inline-block">
               Contact Us
             </Link>
           </li>
           <li>
             {" "}
-            <Link to="/AboutUs" className="py-7 px-3 inline-block">
+            <Link to="/AboutUs" className="py-3 px-3 inline-block">
               About us
             </Link>
           </li>
@@ -110,7 +136,7 @@ const navbar = () => {
             )}
           </li>
           {/* <NavLinks /> */}
-          <div className="py-5">
+          <div className="py-3">
             {token ? (
               <>
                 <button

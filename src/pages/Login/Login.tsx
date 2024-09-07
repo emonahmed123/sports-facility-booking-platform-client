@@ -1,6 +1,6 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-unsafe-optional-chaining */
+
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -8,55 +8,63 @@ import { useLoginMutation } from "../../redux/api/authApi/authApi";
 import { useAppDispatch } from "../../redux/hook";
 import { setToken, setUser } from "../../redux/features/userSlice";
 import { jwtDecode } from "jwt-decode";
-
+import { getErrorMessage } from "@/utils/hookErrorHandle";
+import { useState } from "react";
+import { RxEyeClosed, RxEyeOpen } from "react-icons/rx";
 
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
 
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
+
+
   const {
     register,
-    // formState: { errors },
+    formState: { errors },
     handleSubmit,
   } = useForm();
 
-  // const typedErrors = errors as FieldErrors<FieldValues>;
-
   const onSubmit = async (data: any) => {
+    try {
+      const res = await login(data).unwrap();
 
+      if (res.data) {
+        const accessToken = res.data.accessToken;
+        // console.log(res.data)
+        const user = jwtDecode(accessToken);
+        dispatch(setUser(user));
+        dispatch(setToken(accessToken));
+        const Success = res.message;
 
-    const res = await login(data);
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: `${Success}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
 
-    if (res.data) {
-      const { accessToken } = res?.data?.data;
-      console.log(accessToken);
-      const user = jwtDecode(accessToken);
-
-      dispatch(setUser(user));
-      dispatch(setToken(accessToken));
-      const Success = res?.data?.message;
-
-      Swal.fire({
-        icon: "success",
-        title: "success",
-        text: `${Success}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      navigate("/");
+      }
     }
-    else {
+    catch (error: any) {
+      console.log(error)
       Swal.fire({
         icon: "error",
-        title: "Opps",
-        text: `something is worng`,
+        title: `${error?.data?.message || "Intarnal Server Error"}`,
+        text: `Login Failed`,
 
       });
     }
 
-
-  };
+  }
 
   return (
     <section className="py-[20px] ">
@@ -98,16 +106,11 @@ const Login = () => {
                   className="input input-bordered w-full max-w-xs"
                 />
                 <label className="label">
-                  {/* {typedErrors?.email?.type === "required" && (
+                  {getErrorMessage(errors, "email") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors?.email.message}
+                      {getErrorMessage(errors, "email")}
                     </span>
-                  )} */}
-                  {/* {typedErrors?.email?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500">
-                      {typedErrors?.email.message}
-                    </span>
-                  )} */}
+                  )}
                 </label>
               </div>
               <div className="form-control w-full max-w-xs">
@@ -127,21 +130,27 @@ const Login = () => {
                       message: "Must be 6 characters or longer",
                     },
                   })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   placeholder="You password"
                   className="input input-bordered w-full max-w-xs"
                 />
+                <span
+                  className=" text-gray-400 absolute right-10 top-10 px-2 flex items-center cursor-pointer   h-full"
+                  onClick={togglePasswordVisibility}
+                >
+                  {passwordVisible ? (
+                    <RxEyeOpen className="w-5 h-5  " />
+                  ) : (
+                    <RxEyeClosed className="w-5 h-5 " />
+                  )}
+                </span>
+
                 <label className="label">
-                  {/* {typedErrors.password?.type === "required" && (
+                  {getErrorMessage(errors, "password") && (
                     <span className="label-text-alt text-red-500">
-                      {typedErrors?.password.message}
+                      {getErrorMessage(errors, "password")}
                     </span>
-                  )} */}
-                  {/* {typedErrors?.password?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {typedErrors?.password.message}
-                    </span>
-                  )} */}
+                  )}
                 </label>
               </div>
 

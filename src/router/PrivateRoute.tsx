@@ -5,21 +5,26 @@ import { useAppSelector } from "../redux/hook";
 import { ReactNode } from "react";
 
 
-  
 
-const PrivateRoute = ( {children}: { children: ReactNode }) => {
+
+
+
+
+const PrivateRoute = ({ children }: { children: ReactNode }) => {
+
     const location = useLocation();
-    const { user } = useAppSelector((state:RootState) => state.user);
+    const { user } = useAppSelector((state: RootState) => state.user);
 
-    
-    // if(loading){
-    //     return <progress className="progress w-56"></progress>
-    // }
+
+
 
     if (user.email) {
+
         return children;
     }
-    return <Navigate to="/login" state={{from: location}}replace></Navigate>
+
+    return <Navigate to="/login" state={{ from: location }} replace></Navigate>
+
 };
 
 export default PrivateRoute;

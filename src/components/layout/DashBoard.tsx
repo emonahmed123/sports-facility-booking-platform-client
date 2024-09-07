@@ -70,7 +70,7 @@ const DashBoard = () => {
               </ul>
             </div>
           </div>
-          <div className='md:ml-0 pl-5  '>
+          <div className='px-2 xl:px-0'>
 
 
 
@@ -83,7 +83,7 @@ const DashBoard = () => {
 
 
         </div>
-        <div className="drawer-side    ">
+        <div className="drawer-side">
           <label htmlFor="my-drawer-3" className="drawer-overlay "></label>
 
           <ul className="menu p-3   font-normal font-Poppis  bg-[#9260E2] min-h-screen">

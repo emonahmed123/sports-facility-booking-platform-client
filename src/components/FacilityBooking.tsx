@@ -1,4 +1,3 @@
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetSingleFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
 import React, { useState } from "react";
@@ -13,6 +12,7 @@ import {
 } from "@/redux/api/bookingApi/bookingApi";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { getErrorMessage } from "@/utils/hookErrorHandle";
 
 const FacilityBooking = () => {
   const [startDate, setSelectedDate] = useState(
@@ -34,7 +34,7 @@ const FacilityBooking = () => {
     });
   const {
     register,
-    // formState: { errors },
+    formState: { errors },
     handleSubmit,
   } = useForm();
 
@@ -54,28 +54,28 @@ const FacilityBooking = () => {
   const onSubmit = async (data: any) => {
     const MutionData = { ...data, facility: _id };
 
-    console.log(MutionData);
-    const res = await booking(MutionData);
+    try {
+      const res = await booking(MutionData).unwrap();
 
-    if (res.data) {
-      const Success = res?.data?.message;
+      // console.log(res)
 
-      Swal.fire({
-        icon: "success",
-        title: "success",
-        text: `${Success}`,
-        showConfirmButton: false,
-        timer: 1500,
-      });
-    }
-
-    if (res.error) {
-
-
+      if (res.data?.result) {
+        window.location.href = res?.data?.payment_url;
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Opps",
+          text: "Something Worng",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    } catch (error: any) {
+      console.log(error);
       Swal.fire({
         icon: "error",
         title: "Opps",
-        text: "something worng",
+        text: `${error?.data?.message}`,
         showConfirmButton: false,
         timer: 1500,
       });
@@ -104,15 +104,23 @@ const FacilityBooking = () => {
           </button>
         </div>
         <div className="mt-10">
-          {availableSlots.data.length > 0 ? (
-            <ul className="flex justify-center">
-              {availableSlots.data.map((slot: { _id: React.Key | null | undefined; startTime: any; endTime: any; }) => (
-                <li
-                  className=" text-10px "
-                  key={slot._id}
-                >{`StartTime: ${slot.startTime} ,  EndTime: ${slot.endTime}`}</li>
-              ))}
-            </ul>
+          {availableSlots?.data?.length > 0 ? (
+            <div className="flex justify-center flex-col  items-center">
+              {availableSlots?.data?.map(
+                (slot: {
+                  _id: React.Key | null | undefined;
+                  startTime: any;
+                  endTime: any;
+                }) => (
+                  <ul className=" text-10px " key={slot?._id}>
+                    <li>
+                      StartTime: {slot?.startTime} <span>---</span> EndTime:
+                      {slot?.endTime}
+                    </li>
+                  </ul>
+                )
+              )}
+            </div>
           ) : (
             <p>No slots available for the selected date and facility.</p>
           )}
@@ -164,18 +172,18 @@ const FacilityBooking = () => {
                 placeholder="start password"
                 className="input input-bordered w-full max-w-xs"
               />
-              {/* <label className="label">
-                {typedErrors.startTime?.type === "required" && (
+              <label className="label">
+                {getErrorMessage(errors, "startTime") && (
                   <span className="label-text-alt text-red-500">
-                    {typedErrors?.startTime.message}
+                    {getErrorMessage(errors, "startTime")}
                   </span>
                 )}
-              </label> */}
+              </label>
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
                 <span className="label-text text-bold">
-                  StartTime <sup>*</sup>
+                  EndTime <sup>*</sup>
                 </span>
               </label>
               <input
@@ -186,16 +194,16 @@ const FacilityBooking = () => {
                   },
                 })}
                 type="time"
-                placeholder="start password"
+                placeholder="end Time"
                 className="input input-bordered w-full max-w-xs"
               />
-              {/* <label className="label">
-                {typedErrors.endTime?.type === "required" && (
+              <label className="label">
+                {getErrorMessage(errors, "endTime") && (
                   <span className="label-text-alt text-red-500">
-                    {typedErrors?.endTime.message}
+                    {getErrorMessage(errors, "endTime")}
                   </span>
                 )}
-              </label> */}
+              </label>
             </div>
 
             {isLoading ? (

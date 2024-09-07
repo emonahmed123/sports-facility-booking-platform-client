@@ -1,15 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { usePostSingleFacilityMutation } from "@/redux/api/facilitesApi/facilitesApi";
+import { getErrorMessage } from "@/utils/hookErrorHandle";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const AddFacility = () => {
   const {
     register,
+    formState: { errors },
     handleSubmit,
   } = useForm();
 
-  const [facility, { isError, }] = usePostSingleFacilityMutation();
+  const [facility, { isError }] = usePostSingleFacilityMutation();
   const onSubmit = async (data: any) => {
     // console.log(data);
     const pureData = {
@@ -46,9 +48,12 @@ const AddFacility = () => {
 
 
   return (
-    <div className="mx-52">
-      <form className="mx-45" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="text-[40px] leading-[50px]">Add a new Facility</h1>
+    <div className="  py-5 flex justify-center items-center  flex-col">
+
+
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <h1 className=" text-[30px] leading-[40px] lg:text-[40px] lg:leading-[50px] text-center mb-5">Add a New Facility</h1>
         <div className="form-control w-full max-w-xs">
           <label className="label">
             <span className="label-text text-bold">Name</span>
@@ -66,13 +71,13 @@ const AddFacility = () => {
             className="input input-bordered w-full max-w-xs"
           />
 
-          {/* <label className="label">
-            {errors.name?.type === "required" && (
+          <label className="label">
+            {getErrorMessage(errors, "name") && (
               <span className="label-text-alt text-red-500">
-                {errors.name.message}
+                {getErrorMessage(errors, "name")}
               </span>
             )}
-          </label> */}
+          </label>
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -84,19 +89,23 @@ const AddFacility = () => {
                 value: true,
                 message: " Description is Required",
               },
+              minLength: {
+                value: 15,
+                message: 'Must be 15 chareter '
+              }
             })}
             type=""
             placeholder="Description"
             className="input input-bordered w-full max-w-xs"
           />
 
-          {/* <label className="label">
-            {errors.description?.type === "required" && (
+          <label className="label">
+            {getErrorMessage(errors, "description") && (
               <span className="label-text-alt text-red-500">
-                {errors.description.message}
+                {getErrorMessage(errors, "description")}
               </span>
             )}
-          </label> */}
+          </label>
         </div>
 
         <div className="form-control w-full max-w-xs">
@@ -114,13 +123,13 @@ const AddFacility = () => {
             placeholder="price"
             className="input input-bordered w-full max-w-xs"
           />
-          {/* <label className="label">
-            {errors.price?.type === "required" && (
+          <label className="label">
+            {getErrorMessage(errors, "Price") && (
               <span className="label-text-alt text-red-500">
-                {errors.price.message}
+                {getErrorMessage(errors, "Price")}
               </span>
             )}
-          </label> */}
+          </label>
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -137,13 +146,13 @@ const AddFacility = () => {
             placeholder="location"
             className="input input-bordered w-full max-w-xs"
           />
-          {/* <label className="label">
-            {errors.location?.type === "required" && (
+          <label className="label">
+            {getErrorMessage(errors, "location") && (
               <span className="label-text-alt text-red-500">
-                {errors.location.message}
+                {getErrorMessage(errors, "location")}
               </span>
             )}
-          </label> */}
+          </label>
         </div>
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -156,17 +165,17 @@ const AddFacility = () => {
                 message: "image is Required",
               },
             })}
-            type="text"
+            type="url"
             placeholder="image"
             className="input input-bordered w-full max-w-xs"
           />
-          {/* <label className="label">
-            {errors.location?.type === "required" && (
+          <label className="label">
+            {getErrorMessage(errors, "image") && (
               <span className="label-text-alt text-red-500">
-                {errors.image.message}
+                {getErrorMessage(errors, "image")}
               </span>
             )}
-          </label> */}
+          </label>
         </div>
         <div className="form-control w-full max-w-xs">
           <input

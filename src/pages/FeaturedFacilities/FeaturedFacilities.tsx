@@ -36,19 +36,19 @@ const FeaturedFacilities = () => {
     return (
       <p className="text-[30px] text-center py-5 text-red-600">
 
-        "something"
+        Something  worng!
       </p>
     );
   }
 
   return (
-    <section className="py-[60px] md:pt-[40px] md:pb-[90px] ">
-      <div className="  max-w-[1170px] mx-auto ">
-        <h2 className="text-3xl my-10 font-bold text-center">
+    <section id="nav" className="py-[60px] md:pt-[40px] md:pb-[90px] ">
+      <div className="  max-w-[1170px] mx-auto px-5 xl:px-0">
+        <h2 className="text-3xl mb-10 font-bold text-center">
           {" "}
           OUR Featured <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   ">
           {facility?.data?.map((item: any) => (
             <FacilityCard item={item} key={item.index}></FacilityCard>
           ))}
