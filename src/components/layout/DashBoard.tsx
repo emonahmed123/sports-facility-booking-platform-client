@@ -11,6 +11,7 @@ import { useGetMeQuery } from "@/redux/api/authApi/authApi";
 import Loading from "../Loading";
 import { useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
+import { FaPersonRifle } from "react-icons/fa6";
 
 const DashBoard = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
@@ -81,14 +82,6 @@ const DashBoard = () => {
               </Link>
             </div>
 
-            <li>
-              {" "}
-              <Link to="/dashboard/myprofile">
-                <MdDashboard />
-                <span className="text-[16px]">Dashboard</span>
-              </Link>{" "}
-            </li>
-
             {user?.role === "admin" ? (
               ""
             ) : (
@@ -101,11 +94,25 @@ const DashBoard = () => {
                     <span className="text-[16px]">Mybooking</span>{" "}
                   </Link>
                 </li>
+                <li>
+                  {" "}
+                  <Link to="/dashboard/myprofile">
+                    <FaPersonRifle />
+                    <span className="text-[16px]">Myprofile</span>
+                  </Link>{" "}
+                </li>
               </>
             )}
 
             {user?.role === "admin" && (
               <>
+                <li className="text-[#FFF] text-[20px] py-2">
+                  {" "}
+                  <Link to="/dashboard/overview">
+                    <MdDashboard />
+                    <span className="text-[16px]">Dashboard</span>
+                  </Link>
+                </li>
                 <li className="text-[#FFF] text-[20px] py-2">
                   {" "}
                   <Link to="/dashboard/addFacility">
@@ -141,6 +148,13 @@ const DashBoard = () => {
                     <AiOutlineShoppingCart />
                     <span className="text-[16px]">mybooking</span>{" "}
                   </Link>
+                </li>
+                <li className="text-white">
+                  {" "}
+                  <Link to="/dashboard/myprofile">
+                    <FaPersonRifle />
+                    <span className="text-[16px] text-[#FFF]">My profile</span>
+                  </Link>{" "}
                 </li>
               </>
             )}

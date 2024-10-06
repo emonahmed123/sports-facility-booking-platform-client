@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import FacilityCard from "@/components/FacilityCard";
-import Loading from "@/components/Loading";
 import { useGetFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
-import { Link } from "react-router-dom";
+import Loading from "@/components/Loading";
+import React from "react";
 
-const FeaturedFacilities = () => {
+const SimpleFiter = () => {
   const { data: facility, isLoading, isError } = useGetFacilityQuery(undefined);
 
   if (isLoading) {
@@ -36,24 +36,20 @@ const FeaturedFacilities = () => {
   }
 
   return (
-    <section id="nav" className="py-[60px]  lg:py-[90px] ">
+    <section id="nav" className="py-[60px] md:pt-[40px] md:pb-[90px] ">
       <div className="  max-w-[1170px] mx-auto px-5 xl:px-0">
         <h2 className="text-3xl mb-10 font-bold text-center">
           {" "}
-          OUR Featured <span className="text-[#3d85ff]">Facilities </span>{" "}
+          OUR All <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   ">
           {facility?.data?.map((item: any) => (
             <FacilityCard item={item} key={item.index}></FacilityCard>
           ))}
         </div>
-
-        <button className=" flex justify-center items-center text-primary w-full ">
-          <Link to="/filter"> View More </Link>
-        </button>
       </div>
     </section>
   );
 };
 
-export default FeaturedFacilities;
+export default SimpleFiter;

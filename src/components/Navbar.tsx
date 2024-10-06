@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const navbar = () => {
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const { token } = useAppSelector((state: RootState) => state.user);
+  const { token, user } = useAppSelector((state: RootState) => state.user);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -57,22 +57,28 @@ const navbar = () => {
             <Link to="/AboutUs" className="py-7 px-3 inline-block">
               About Us
             </Link>
-
           </li>
           <li>
             <Link to="/contac" className="py-7 px-3 inline-block">
               Contact Us
             </Link>
-
           </li>
 
-          {token ? (
+          {token && user.role === "admin" ? (
+            <Link to="/dashboard/overview" className="py-7 px-3 inline-block">
+              Dashboard
+            </Link>
+          ) : (
+            ""
+          )}
+          {token && user.role === "user" ? (
             <Link to="/dashboard/myprofile" className="py-7 px-3 inline-block">
               Dashboard
             </Link>
           ) : (
             ""
           )}
+
           {/* <NavLinks /> */}
         </ul>
         <div className="md:flex gap-x-2 hidden ">
@@ -102,7 +108,6 @@ const navbar = () => {
       md:hidden bg-white fixed  z-[99] w-[300px] top-0 overflow-y-auto bottom-0 pt-5 pl-4
       duration-500 ${open ? "left-0" : "left-[-100%] "}
       `}
-
         >
           <img
             src="https://besnik-space.fra1.cdn.digitaloceanspaces.com/ezytor/theme/N8lApmzhKXbK5HA7kTpU1702703250.svg"
@@ -128,7 +133,10 @@ const navbar = () => {
           </li>
           <li>
             {token ? (
-              <Link to="/dashboard/myprofile" className="py-7 px-3 inline-block">
+              <Link
+                to="/dashboard/myprofile"
+                className="py-7 px-3 inline-block"
+              >
                 Dashboard
               </Link>
             ) : (

@@ -102,7 +102,7 @@ const FacilityBooking = () => {
               onChange={handleDateChange}
               dateFormat="yyyy/MM/dd" // For display
             />
-            <div>
+            <div className="hidden md:block">
               <button
                 onClick={() => console.log(availableSlots)}
                 className=" bg-primary px-8 py-2  w-full text-white rounded-[9px]"

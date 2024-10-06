@@ -16,6 +16,13 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [login, { isLoading }] = useLoginMutation();
+  const [credentials, setCredentials] = useState<{
+    email: string;
+    password: string;
+  }>({
+    email: "",
+    password: "",
+  });
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -24,6 +31,7 @@ const Login = () => {
   const {
     register,
     formState: { errors },
+    setValue,
     handleSubmit,
   } = useForm();
 
@@ -58,6 +66,16 @@ const Login = () => {
     }
   };
 
+  const handleCredentials = (type: string) => {
+    const newCredentials =
+      type === "user"
+        ? { email: "emonsss@gmail.com", password: "123456" }
+        : { email: "emons@gmail.com", password: "123456" };
+
+    setCredentials(newCredentials);
+    setValue("email", newCredentials.email);
+    setValue("password", newCredentials.password);
+  };
   return (
     <section className="py-[20px] ">
       <div className=" max-w-[1170px] mx-auto px-2 xl:px-0">
@@ -106,7 +124,7 @@ const Login = () => {
                     )}
                   </label>
                 </div>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-xs relative">
                   <label className="label">
                     <span className="label-text text-bold">
                       Password <sup>*</sup>
@@ -123,12 +141,13 @@ const Login = () => {
                         message: "Must be 6 characters or longer",
                       },
                     })}
+                    defaultValue={credentials.password}
                     type={passwordVisible ? "text" : "password"}
                     placeholder="You password"
                     className="input input-bordered w-full max-w-xs"
                   />
                   <span
-                    className=" text-gray-400 absolute right-10 top-10 px-2 flex items-center cursor-pointer   h-full"
+                    className=" text-gray-400 absolute right-0 top-3 px-2 flex items-center cursor-pointer   h-full"
                     onClick={togglePasswordVisibility}
                   >
                     {passwordVisible ? (
@@ -145,6 +164,24 @@ const Login = () => {
                       </span>
                     )}
                   </label>
+                </div>
+
+                <div className="space-x-3">
+                  <p className="text-sm text-center my-2 text-warning">
+                    click on the any Link to fill the inputs
+                  </p>
+                  <button
+                    className="btn btn-link"
+                    onClick={() => handleCredentials("admin")}
+                  >
+                    Admin
+                  </button>
+                  <button
+                    className="btn btn-link"
+                    onClick={() => handleCredentials("user")}
+                  >
+                    User
+                  </button>
                 </div>
 
                 {isLoading ? (

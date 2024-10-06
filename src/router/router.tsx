@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home/Home";
-import Singup from "../pages/Singup/Singup"
+import Singup from "../pages/Singup/Singup";
 import Login from "../pages/Login/Login";
-import PrivateRoute from './PrivateRoute'
+import PrivateRoute from "./PrivateRoute";
 import FacilityDetail from "@/components/FacilityDetail";
 import FacilityBooking from "@/components/FacilityBooking";
 import Contact from "@/pages/Contact/Contact";
@@ -19,90 +19,119 @@ import AboutUs from "@/pages/AboutUs/AboutUs";
 import AllBooking from "@/pages/Dashboard/AllBooking/AllBooking";
 import MyBooking from "@/pages/Dashboard/MyBooking/MyBooking";
 import PaymentSuccess from "@/pages/Payment/PaymentSuccess";
+import Overview from "@/pages/Dashboard/Overveiw/Overview";
+import SimpleFiter from "@/pages/SimpleFilter/SimpleFiter";
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/singup",
+        element: <Singup />,
+      },
+      {
+        path: "/success",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <FacilityDetail />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/booking/:id",
+        element: <FacilityBooking />,
+      },
+      {
+        path: "/contac",
+        element: <Contact />,
+      },
+      {
+        path: "/AboutUs",
+        element: <AboutUs />,
+      },
+      {
+        path: "/filter",
+        element: <SimpleFiter />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
+      },
+    ],
+  },
 
-
-        path: '/',
-        element: <App />,
-        children: [
-            {
-                index: true,
-                element: <Home />
-
-            }, {
-                path: '/singup',
-                element: <Singup />
-            }
-            , {
-                path: '/success',
-                element: <PaymentSuccess />
-            }
-            , {
-                path: '/login',
-                element: <Login />
-            }
-            , {
-                path: '/details/:id',
-                element: <PrivateRoute><FacilityDetail /></PrivateRoute>
-            }
-            , {
-                path: '/booking/:id',
-                element: <FacilityBooking />
-            }
-            , {
-                path: '/contac',
-                element: <Contact />
-            }
-            , {
-                path: '/AboutUs',
-                element: <AboutUs />
-            }
-            , {
-                path: '*',
-                element: <NotFound />
-            }
-
-        ]
-    },
-
-    {
-        path: 'dashboard',
-        element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
-        children: [
-
-            {
-                path: 'myprofile',
-                element: <Myprofile />
-            },
-            {
-                path: '/dashboard/addFacility',
-                element: <AddFacility />
-            },
-            {
-                path: '/dashboard/AllFacility',
-                element: <DeleteFacility />
-            },
-            {
-                path: '/dashboard/updatedfac/:id',
-                element: <AdminRoute><UpdateFacility /></AdminRoute>
-            },
-            {
-                path: 'makeadmin',
-                element: <AdminRoute> <MakeAdmin /></AdminRoute>
-            },
-            {
-                path: 'allBooking',
-                element: <AdminRoute> <AllBooking /></AdminRoute>
-            },
-            {
-                path: 'mybooking',
-                element: <PrivateRoute> <MyBooking /></PrivateRoute>
-            }
-
-
-
-        ]
-    }
-
-])
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <DashBoard></DashBoard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "myprofile",
+        element: <Myprofile />,
+      },
+      {
+        path: "/dashboard/addFacility",
+        element: <AddFacility />,
+      },
+      {
+        path: "/dashboard/overview",
+        element: <Overview />,
+      },
+      {
+        path: "/dashboard/AllFacility",
+        element: <DeleteFacility />,
+      },
+      {
+        path: "/dashboard/updatedfac/:id",
+        element: (
+          <AdminRoute>
+            <UpdateFacility />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "makeadmin",
+        element: (
+          <AdminRoute>
+            {" "}
+            <MakeAdmin />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "allBooking",
+        element: (
+          <AdminRoute>
+            {" "}
+            <AllBooking />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "mybooking",
+        element: (
+          <PrivateRoute>
+            {" "}
+            <MyBooking />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);
