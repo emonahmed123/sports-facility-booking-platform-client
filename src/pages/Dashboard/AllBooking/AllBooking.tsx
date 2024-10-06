@@ -11,8 +11,9 @@ const AllBooking = () => {
   }
 
   return (
-    <div>
-      <div>
+    <>
+      <div className="max-w-[1240px] px-5 mx-auto font-mono mb-5">
+        <h2 className="text-[40px] leading-[50px] text-center">All Bookings</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -32,7 +33,11 @@ const AllBooking = () => {
 
                   <td>{item?.facility?.name}</td>
                   <td className="">${item?.payableAmount}</td>
-                  <td>{item?.isBooked}</td>
+                  <td>
+                    <span className="text-success py-2 px-2 rounded-full text-white">
+                      {item?.isBooked}
+                    </span>
+                  </td>
                   <td>{item?.date}</td>
                   <td>
                     {item?.startTime}-{item?.endTime}
@@ -43,7 +48,7 @@ const AllBooking = () => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -1,12 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-
+import { Rating } from "@smastrom/react-rating";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const FacilityCard = (props: { item: { _id: any; name: any; description: any; pricePerHour: any; location: any; image: any; }; }) => {
+const FacilityCard = (props: {
+  item: {
+    _id: any;
+    name: any;
+    description: any;
+    pricePerHour: any;
+    location: any;
+    image: any;
+  };
+}) => {
   // console.log(props)
   const { _id, name, pricePerHour, location, image } = props.item;
-
+  const [rating, setRating] = useState(5);
   const navigate = useNavigate();
   const NavigaetFaclility = (_id: string) => {
     navigate(`/details/${_id}`);
@@ -27,6 +38,11 @@ const FacilityCard = (props: { item: { _id: any; name: any; description: any; pr
             <h3 className="text-18px leading-28px md:text-22px md:leading-[32px] font-semibold text-heading mb-[2px]">
               {name}
             </h3>
+            <p>
+              {" "}
+              <Rating style={{ maxWidth: 50 }} value={rating} />
+            </p>
+
             <p className="text-[16px] leading-[26px] text-[#666270]">
               {location}
             </p>

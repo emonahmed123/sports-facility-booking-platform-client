@@ -83,143 +83,154 @@ const FacilityBooking = () => {
   };
 
   return (
-    <section className="py-[60px] md:py-[90px] ">
-      <div className="max-w-[1170px] mx-auto px-5 md:px-0">
-        <h1 className="text-[50px] leading-[60px] text-center font-mono">
-          Facility Name {name}
-        </h1>
+    <section className="py-[60px] md:py-[70px] ">
+      <div className="max-w-[1170px] px-5 xl:px-0 mx-auto">
+        <p className="text-[14px] text-gray-400 ml-44 mb-3">
+          {" "}
+          Cheak available Time
+        </p>
 
-        <div className="flex justify-center mt-5  gap-x-2">
-          <DatePicker
-            className="border py-3"
-            selected={startDate ? new Date(startDate) : null}
-            onChange={handleDateChange}
-            dateFormat="yyyy/MM/dd" // For display
-          />
-          <button
-            onClick={() => console.log(availableSlots)}
-            className=" bg-primary px-8 py-2 text-white rounded"
-          >
-            Cheak
-          </button>
-        </div>
-        <div className="mt-10">
-          {availableSlots?.data?.length > 0 ? (
-            <div className="flex justify-center flex-col  items-center">
-              {availableSlots?.data?.map(
-                (slot: {
-                  _id: React.Key | null | undefined;
-                  startTime: any;
-                  endTime: any;
-                }) => (
-                  <ul className=" text-10px " key={slot?._id}>
-                    <li>
-                      StartTime: {slot?.startTime} <span>---</span> EndTime:
-                      {slot?.endTime}
-                    </li>
-                  </ul>
-                )
-              )}
+        <div className="max-w-[799px] mx-auto   shadow-sm border py-7 px-5">
+          <h1 className="text-[40px] leading-[30px] text-center font-mono mb-2">
+            {name}
+          </h1>
+
+          <div className="flex justify-center mt-5  gap-x-2 shrink-0">
+            <DatePicker
+              className="border py-2 px-2  w-[350px] rounded-[9px]"
+              selected={startDate ? new Date(startDate) : null}
+              onChange={handleDateChange}
+              dateFormat="yyyy/MM/dd" // For display
+            />
+            <div>
+              <button
+                onClick={() => console.log(availableSlots)}
+                className=" bg-primary px-8 py-2  w-full text-white rounded-[9px]"
+              >
+                Cheak
+              </button>
             </div>
-          ) : (
-            <p>No slots available for the selected date and facility.</p>
-          )}
-        </div>
+          </div>
+          <div className="mt-10 mb-10">
+            {availableSlots?.data?.length > 0 ? (
+              <div className="flex justify-center flex-col  items-center">
+                {availableSlots?.data?.map(
+                  (slot: {
+                    _id: React.Key | null | undefined;
+                    startTime: any;
+                    endTime: any;
+                  }) => (
+                    <ul className=" text-10px " key={slot?._id}>
+                      <li>
+                        StartTime: {slot?.startTime} <span>---</span> EndTime:
+                        {slot?.endTime}
+                      </li>
+                    </ul>
+                  )
+                )}
+              </div>
+            ) : (
+              <p>No slots available for the selected date and facility.</p>
+            )}
+          </div>
 
-        <div className=" max-w-[300px] mx-auto">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text text-bold">
-                  date <sup>*</sup>
-                </span>
-              </label>
-              <input
-                {...register("date", {
-                  required: {
-                    value: true,
-                    message: " date is Required",
-                  },
-                })}
-                value={startDate ? startDate : ""}
-                type="text"
-                readOnly
-                placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs"
-              />
-              {/* <label className="label">
+          <div className="">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      date <sup>*</sup>
+                    </span>
+                  </label>
+                  <input
+                    {...register("date", {
+                      required: {
+                        value: true,
+                        message: " date is Required",
+                      },
+                    })}
+                    value={startDate ? startDate : ""}
+                    type="text"
+                    readOnly
+                    placeholder="Your Email"
+                    className="input input-bordered w-full "
+                  />
+                  {/* <label className="label">
                 {typedErrors?.date?.type === "required" && (
                   <span className="label-text-alt text-red-500">
                     {typedErrors?.date.message}
                   </span>
                 )}
               </label> */}
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text text-bold">
-                  StartTime <sup>*</sup>
-                </span>
-              </label>
-              <input
-                {...register("startTime", {
-                  required: {
-                    value: true,
-                    message: " startTime  is Required",
-                  },
-                })}
-                type="time"
-                placeholder="start password"
-                className="input input-bordered w-full max-w-xs"
-              />
-              <label className="label">
-                {getErrorMessage(errors, "startTime") && (
-                  <span className="label-text-alt text-red-500">
-                    {getErrorMessage(errors, "startTime")}
-                  </span>
-                )}
-              </label>
-            </div>
-            <div className="form-control w-full max-w-xs">
-              <label className="label">
-                <span className="label-text text-bold">
-                  EndTime <sup>*</sup>
-                </span>
-              </label>
-              <input
-                {...register("endTime", {
-                  required: {
-                    value: true,
-                    message: " endTime  is Required",
-                  },
-                })}
-                type="time"
-                placeholder="end Time"
-                className="input input-bordered w-full max-w-xs"
-              />
-              <label className="label">
-                {getErrorMessage(errors, "endTime") && (
-                  <span className="label-text-alt text-red-500">
-                    {getErrorMessage(errors, "endTime")}
-                  </span>
-                )}
-              </label>
-            </div>
+                </div>
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      StartTime <sup>*</sup>
+                    </span>
+                  </label>
+                  <input
+                    {...register("startTime", {
+                      required: {
+                        value: true,
+                        message: " startTime  is Required",
+                      },
+                    })}
+                    type="time"
+                    placeholder="start password"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "startTime") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "startTime")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      EndTime <sup>*</sup>
+                    </span>
+                  </label>
+                  <input
+                    {...register("endTime", {
+                      required: {
+                        value: true,
+                        message: " endTime  is Required",
+                      },
+                    })}
+                    type="time"
+                    placeholder="end Time"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "endTime") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "endTime")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+              </div>
 
-            {isLoading ? (
-              <button className=" btn w-full max-w-xs bg-[#3d85ff] text-[#ffff]">
-                {" "}
-                Loading{" "}
-                <span className="loading loading-dots loading-xs"></span>{" "}
-              </button>
-            ) : (
-              <input
-                className=" btn w-full max-w-xs bg-[#3d85ff] text-[#ffff]"
-                type="submit"
-                value="Pay"
-              />
-            )}
-          </form>
+              {isLoading ? (
+                <button className=" btn w-full max-w-xl bg-[#3d85ff] text-[#ffff] flex justify-center mx-auto">
+                  {" "}
+                  Loading{" "}
+                  <span className="loading loading-dots loading-xs"></span>{" "}
+                </button>
+              ) : (
+                <input
+                  className=" btn w-full max-w-xl bg-[#3d85ff] text-[#ffff] flex justify-center mx-auto"
+                  type="submit"
+                  value="Pay"
+                />
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </section>

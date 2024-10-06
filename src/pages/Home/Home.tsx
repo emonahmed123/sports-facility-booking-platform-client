@@ -5,6 +5,8 @@ import FeaturedFacilities from "../FeaturedFacilities/FeaturedFacilities";
 import WhyChooseus from "@/components/WhyChooseus";
 import ScrollToTop from "react-scroll-to-top";
 import { LuArrowBigUpDash } from "react-icons/lu";
+import Newslter from "@/components/Newslter";
+import Faq from "@/components/faq";
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
       <HowItWorks />
       <TestimonialSlide />
       <WhyChooseus />
+      <Newslter />
+      <Faq />
     </>
   );
 };

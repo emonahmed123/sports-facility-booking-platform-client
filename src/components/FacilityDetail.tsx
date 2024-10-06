@@ -13,8 +13,7 @@ const FacilityDetail = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const { name, description, pricePerHour, location, image } =
-    facility.data;
+  const { name, description, pricePerHour, location, image } = facility.data;
 
   const NavigaetBook = (_id: string) => {
     navigate(`/booking/${_id}`);
@@ -22,7 +21,7 @@ const FacilityDetail = () => {
 
   return (
     <section className=" py-[60px] ">
-      <div className="max-w-[370px] mx-auto relative px-2 py-2 bg-[#f5f8fc] rounded-[9px] border  border-[#D4D8DE] font-Poppis">
+      <div className="max-w-[470px] mx-auto relative px-2 py-2 bg-[#f5f8fc] rounded-[9px] border  border-[#D4D8DE] font-Poppis">
         <img
           className="mb-5 w-full h-[200px] object-cover"
           loading="lazy"

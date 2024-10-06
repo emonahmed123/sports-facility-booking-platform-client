@@ -1,9 +1,7 @@
-
-
 const Footer = () => {
   return (
-    <footer>
-      <div className="pt-[70px] pb-[30px] bg-[#FFFFFF] font-Poppis">
+    <footer className=" ">
+      <div className="pt-[70px] pb-[30px] bg-[url('https://img.freepik.com/premium-vector/runner-themed-background-green-tones-with-abstract-dotted-lines-with-sport-symbols-such-as-male-athlete-cup_444390-24290.jpg?uid=R62870101&ga=GA1.1.1941186020.1718963798&semt=ais_hybrid')] bg-cover bg-current bg-no-repeat ">
         <div className="max-w-[1170px] mx-auto px-5 xl:px-0">
           <div className="flex lg:items-start justify-between flex-col lg:flex-row gap-y-[60px] mb-[30px]">
             <div className="max-w-[370px]">

@@ -11,8 +11,7 @@ import Swal from "sweetalert2";
 const DeleteFacility = () => {
   const { data: facility, isLoading } = useGetFacilityQuery(undefined);
 
-  const [deleteFacility] =
-    useDeletedSingleFacilityMutation();
+  const [deleteFacility] = useDeletedSingleFacilityMutation();
 
   const handleDeleteItem = (item: any) => {
     console.log(item);
@@ -68,6 +67,9 @@ const DeleteFacility = () => {
   return (
     <div>
       <div>
+        <h1 className="text-[40px] leading-[50px] text-center mb-5">
+          All Facaility
+        </h1>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
