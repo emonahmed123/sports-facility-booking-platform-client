@@ -65,9 +65,9 @@ const DeleteFacility = () => {
   }
 
   return (
-    <div>
-      <div>
-        <h1 className="text-[40px] leading-[50px] text-center mb-5">
+    <>
+      <div className="max-w-[1440px] mx-auto px-5">
+        <h1 className="text-[40px] leading-[50px] text-center mb-10">
           All Facaility
         </h1>
         <div className="overflow-x-auto">
@@ -124,7 +124,7 @@ const DeleteFacility = () => {
           </table>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

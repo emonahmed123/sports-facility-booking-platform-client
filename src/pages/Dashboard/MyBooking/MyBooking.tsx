@@ -11,16 +11,23 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const MyBooking = () => {
-  const { data: MyBooking, isLoading, isError } = useGetmyBookingQuery(undefined);
-  const [deleteBooking,] =
-    useDeletedBookingMutation();
+  const {
+    data: MyBooking,
+    isLoading,
+    isError,
+  } = useGetmyBookingQuery(undefined);
+  const [deleteBooking] = useDeletedBookingMutation();
   //    console.log(MyBooking)
 
   if (isLoading) {
     return <Loading />;
   }
   if (isError) {
-    return <p className="text-center text-[20px]">You are Admin You have No acces is this route </p>
+    return (
+      <p className="text-center text-[20px]">
+        You are Admin You have No acces is this route{" "}
+      </p>
+    );
   }
 
   const handleDeleteItem = (item: any) => {
@@ -70,11 +77,11 @@ const MyBooking = () => {
   };
 
   return (
-    <div>
+    <div className="max-w-[1140px] mx-auto py-8">
       {MyBooking?.data?.length > 0 ? (
-        <p className="text-center">MY Booking</p>
+        <p className="text-center text-[30px] mb-5">MY Booking</p>
       ) : (
-        <p className="text-center"> Please Booking !</p>
+        <p className="text-center mb-5"> Please Booking !</p>
       )}
 
       <div>

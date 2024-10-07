@@ -51,7 +51,7 @@ const DashBoard = () => {
               {pathname.includes("myprofile") && <h1>Dashboard</h1>}
               {pathname.includes("addFacility") && <h1>AddFacility</h1>}
               {pathname.includes("AllFacility") && <h1>AllFacility</h1>}
-
+              {pathname.includes("overview") && <h1>OverView</h1>}
               {pathname.includes("ordercomfir") && <h1>Order</h1>}
               {pathname.includes("makeadmin") && <h1>Make Admin</h1>}
             </div>
@@ -94,7 +94,7 @@ const DashBoard = () => {
                     <span className="text-[16px]">Mybooking</span>{" "}
                   </Link>
                 </li>
-                <li>
+                <li className="text-white">
                   {" "}
                   <Link to="/dashboard/myprofile">
                     <FaPersonRifle />

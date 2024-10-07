@@ -40,8 +40,6 @@ const MakeAdmin = () => {
     }
 
     if (res.error) {
-
-
       Swal.fire({
         icon: "error",
         title: "Opps",
@@ -54,162 +52,164 @@ const MakeAdmin = () => {
 
   return (
     <section className="py-[20px] ">
-      <div className="flex min-h-min	 justify-center items-center font-Poppis">
-        <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="max-w-[1170px] mx-auto font-Poppis px-5">
+        <div className="card w-full  bg-base-100 shadow-xl">
           <div className="card-body">
             <h2 className="text-center text-2xl font-bold">
               Make <span className="text-[#3d85ff]"> Admin</span>
             </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-bold">
-                    Name<sup>*</sup>
-                  </span>
-                </label>
-                <input
-                  {...register("name", {
-                    required: {
-                      value: true,
-                      message: " Name is Required",
-                    },
-                  })}
-                  type="name"
-                  placeholder="Your Name"
-                  className="input input-bordered w-full max-w-xs"
-                />
-                <label className="label">
-                  {getErrorMessage(errors, "name") && (
-                    <span className="label-text-alt text-red-500">
-                      {getErrorMessage(errors, "name")}
+              <div className="grid grid-cols-2 gap-5">
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      Name<sup>*</sup>
                     </span>
-                  )}
-                </label>
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-bold">
-                    Email <sup>*</sup>
-                  </span>
-                </label>
-                <input
-                  {...register("email", {
-                    required: {
-                      value: true,
-                      message: " Email is Required",
-                    },
-                    pattern: {
-                      value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                      message: "Provide a valid Email ",
-                    },
-                  })}
-                  type="email"
-                  placeholder="Your Email"
-                  className="input input-bordered w-full max-w-xs"
-                />
-                <label className="label">
-                  {getErrorMessage(errors, "email") && (
-                    <span className="label-text-alt text-red-500">
-                      {getErrorMessage(errors, "email")}
+                  </label>
+                  <input
+                    {...register("name", {
+                      required: {
+                        value: true,
+                        message: " Name is Required",
+                      },
+                    })}
+                    type="name"
+                    placeholder="Your Name"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "name") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "name")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      Email <sup>*</sup>
                     </span>
-                  )}
-                </label>
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-bold">
-                    Password <sup>*</sup>
-                  </span>
-                </label>
-                <input
-                  {...register("password", {
-                    required: {
-                      value: true,
-                      message: " Password   is Required",
-                    },
-                    minLength: {
-                      value: 6,
-                      message: "Must be 6 characters or longer",
-                    },
-                  })}
-                  type="password"
-                  placeholder="You password"
-                  className="input input-bordered w-full max-w-xs"
-                />
-                <label className="label">
-                  {getErrorMessage(errors, "password") && (
-                    <span className="label-text-alt text-red-500">
-                      {getErrorMessage(errors, "password")}
+                  </label>
+                  <input
+                    {...register("email", {
+                      required: {
+                        value: true,
+                        message: " Email is Required",
+                      },
+                      pattern: {
+                        value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                        message: "Provide a valid Email ",
+                      },
+                    })}
+                    type="email"
+                    placeholder="Your Email"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "email") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "email")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      Password <sup>*</sup>
                     </span>
-                  )}
-                </label>
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-bold">
-                    Phone <sup>*</sup>
-                  </span>
-                </label>
-                <input
-                  {...register("phone", {
-                    required: {
-                      value: true,
-                      message: "phone Number is Required",
-                    },
+                  </label>
+                  <input
+                    {...register("password", {
+                      required: {
+                        value: true,
+                        message: " Password   is Required",
+                      },
+                      minLength: {
+                        value: 6,
+                        message: "Must be 6 characters or longer",
+                      },
+                    })}
+                    type="password"
+                    placeholder="You password"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "password") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "password")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      Phone <sup>*</sup>
+                    </span>
+                  </label>
+                  <input
+                    {...register("phone", {
+                      required: {
+                        value: true,
+                        message: "phone Number is Required",
+                      },
 
-                    minLength: {
-                      value: 11,
-                      message: "Must be 11 characters or longer",
-                    },
-                  })}
-                  type="phone"
-                  placeholder="You phone Number"
-                  className="input input-bordered w-full max-w-xs"
-                />
-                <label className="label">
-                  {getErrorMessage(errors, "phone") && (
-                    <span className="label-text-alt text-red-500">
-                      {getErrorMessage(errors, "phone")}
+                      minLength: {
+                        value: 11,
+                        message: "Must be 11 characters or longer",
+                      },
+                    })}
+                    type="phone"
+                    placeholder="You phone Number"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "phone") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "phone")}
+                      </span>
+                    )}
+                  </label>
+                </div>
+                <div className="form-control w-full ">
+                  <label className="label">
+                    <span className="label-text text-bold">
+                      {" "}
+                      Address <sup>*</sup>
                     </span>
-                  )}
-                </label>
-              </div>
-              <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-bold">
-                    {" "}
-                    Address <sup>*</sup>
-                  </span>
-                </label>
-                <input
-                  {...register("address", {
-                    required: {
-                      value: true,
-                      message: " Address is Required",
-                    },
-                  })}
-                  type="address"
-                  placeholder="You address"
-                  className="input input-bordered w-full max-w-xs"
-                />
-                <label className="label">
-                  {getErrorMessage(errors, "address") && (
-                    <span className="label-text-alt text-red-500">
-                      {getErrorMessage(errors, "address")}
-                    </span>
-                  )}
-                </label>
+                  </label>
+                  <input
+                    {...register("address", {
+                      required: {
+                        value: true,
+                        message: " Address is Required",
+                      },
+                    })}
+                    type="address"
+                    placeholder="You address"
+                    className="input input-bordered w-full "
+                  />
+                  <label className="label">
+                    {getErrorMessage(errors, "address") && (
+                      <span className="label-text-alt text-red-500">
+                        {getErrorMessage(errors, "address")}
+                      </span>
+                    )}
+                  </label>
+                </div>
               </div>
 
               {isLoading ? (
-                <button className=" btn w-full max-w-xs bg-[#3d85ff] text-[#ffff]">
+                <button className=" btn w-full  bg-[#3d85ff] text-[#ffff]">
                   {" "}
                   Loading{" "}
                   <span className="loading loading-dots loading-xs"></span>{" "}
                 </button>
               ) : (
                 <input
-                  className=" btn w-full max-w-xs bg-[#3d85ff] text-[#ffff]"
+                  className=" btn w-full  bg-[#3d85ff] text-[#ffff]"
                   type="submit"
                   value="Make Admin"
                 />
