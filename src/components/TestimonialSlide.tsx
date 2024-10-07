@@ -41,7 +41,7 @@ const TestimonialSlide = () => {
                 <Rating style={{ maxWidth: 100 }} value={4} readOnly />
                 <span>{4.0}</span>
               </div>
-              <h3 className="font-bold">- Sarah</h3>
+              <h3 className="font-bold">- sumon</h3>
             </div>
           </div>
           <div className="keen-slider__slide number-slide1 flex items-center justify-center text-center  ">
@@ -57,7 +57,7 @@ const TestimonialSlide = () => {
                 <Rating style={{ maxWidth: 100 }} value={4} readOnly />
                 <span>{4.0}</span>
               </div>
-              <h3 className="font-bold">- Sarah</h3>
+              <h3 className="font-bold">- Emon</h3>
             </div>
           </div>
           {/* slides */}

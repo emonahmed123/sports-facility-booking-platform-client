@@ -86,6 +86,13 @@ const DashBoard = () => {
               ""
             ) : (
               <>
+                <li className="text-white">
+                  {" "}
+                  <Link to="/dashboard/myprofile">
+                    <FaPersonRifle />
+                    <span className="text-[16px]">Myprofile</span>
+                  </Link>{" "}
+                </li>
                 <li className="text-[#FFF] text-[20px] py-2">
                   {" "}
                   <Link to="/dashboard/mybooking">
@@ -93,13 +100,6 @@ const DashBoard = () => {
                     <AiOutlineShoppingCart />
                     <span className="text-[16px]">Mybooking</span>{" "}
                   </Link>
-                </li>
-                <li className="text-white">
-                  {" "}
-                  <Link to="/dashboard/myprofile">
-                    <FaPersonRifle />
-                    <span className="text-[16px]">Myprofile</span>
-                  </Link>{" "}
                 </li>
               </>
             )}

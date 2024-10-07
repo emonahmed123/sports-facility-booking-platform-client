@@ -6,7 +6,7 @@ import WhyChooseus from "@/components/WhyChooseus";
 import ScrollToTop from "react-scroll-to-top";
 import { LuArrowBigUpDash } from "react-icons/lu";
 import Newslter from "@/components/Newslter";
-import Faq from "@/components/faq";
+import Faq from "@/components/Faq";
 
 const Home = () => {
   return (

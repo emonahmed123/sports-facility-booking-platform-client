@@ -38,7 +38,8 @@ const SimpleFiter = () => {
   }
   const filterFacilites = facility?.data.filter(
     (facility: any) =>
-      facility.isDeleted === false && facility?.name.includes(searchTerm)
+      facility.isDeleted === false &&
+      facility?.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
   return (
     <section id="nav" className="py-[60px] md:pt-[40px] md:pb-[90px] ">
