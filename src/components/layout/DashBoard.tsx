@@ -69,7 +69,7 @@ const DashBoard = () => {
           </div>
         </div>
         <div className="drawer-side">
-          <label htmlFor="my-drawer-3" className="drawer-overlay "></label>
+          <label htmlFor="my-drawer-3" className="drawer-overlay z"></label>
 
           <ul className="menu p-3   font-normal font-Poppis  bg-[#9260E2] min-h-screen">
             <div>

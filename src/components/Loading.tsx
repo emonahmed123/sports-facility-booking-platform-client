@@ -1,11 +1,9 @@
-
-
 const Loading = () => {
-    return (
-        <div className="flex items-center justify-center  py-[40px]">
-            <div className="w-16 h-16 border-b-2 border-gray-900 rounded-full animate-spin"></div>
-        </div>
-    );
+  return (
+    <div className="flex items-center justify-center  h-[100vh]">
+      <div className="w-16 h-16 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+    </div>
+  );
 };
 
 export default Loading;

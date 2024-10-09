@@ -59,7 +59,7 @@ const MakeAdmin = () => {
               Make <span className="text-[#3d85ff]"> Admin</span>
             </h2>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-5">
+              <div className="grid grid-cols-1  md:grid-cols-2 gap-5">
                 <div className="form-control w-full ">
                   <label className="label">
                     <span className="label-text text-bold">

@@ -38,7 +38,7 @@ const Myprofile = () => {
     <div className="font-Poppis">
       <div className="mx-auto max-w-242.5">
         <div className="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-          <div className="relative z-20 h-35 md:h-65">
+          <div className="relative h-35 md:h-65">
             <img
               src={"https://demo.tailadmin.com/src/images/cover/cover-01.png"}
               alt="profile cover"
@@ -50,7 +50,7 @@ const Myprofile = () => {
                 height: "auto",
               }}
             />
-            <div className="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
+            <div className="absolute bottom-1 right-1  xsm:bottom-4 xsm:right-4">
               <label
                 htmlFor="cover"
                 className="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary px-2 py-1 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4"
@@ -89,7 +89,7 @@ const Myprofile = () => {
             </div>
           </div>
           <div className="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
-            <div className="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
+            <div className="relative mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
               <div className="relative drop-shadow-2">
                 <img
                   src={"/images/user/user-06.png"}
@@ -145,19 +145,21 @@ const Myprofile = () => {
                   <span className="font-semibold text-black dark:text-white">
                     Phone
                   </span>
-                  <span className="text-sm"> {User.phone}</span>
+                  <span className="text-[10px] sm:text-sm"> {User.phone}</span>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-strokedark xsm:flex-row">
                   <span className="font-semibold text-black dark:text-white">
                     Email
                   </span>
-                  <span className="text-sm">{User?.email}</span>
+                  <span className="text-[10px]  sm:text-sm">{User?.email}</span>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
                   <span className="font-semibold text-black dark:text-white">
                     Address
                   </span>
-                  <span className="text-sm">{User.address}</span>
+                  <span className="text-[10px]  sm:text-sm">
+                    {User.address}
+                  </span>
                 </div>
               </div>
             </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Faq = () => {
   return (
     <section className="py-[50px]  md:py-[70px]">

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Loading from "@/components/Loading";
 import { useGetFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
-import React from "react";
 
 const TopFaclicty = () => {
   const { data: facility, isLoading } = useGetFacilityQuery(undefined);

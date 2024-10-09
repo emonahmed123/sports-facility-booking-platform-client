@@ -1,11 +1,9 @@
-import React from "react";
-
 const Newslter = () => {
   return (
     <section className="py-[50px] md:py-[70px] ">
       <div className="max-w-[1170px] px-5 xl:px-0 mx-auto bg-[#4F55C1] rounded-[10px]">
         <div className="max-w-[650px] mx-auto py-[60px]  ">
-          <h1 className=" text-[40px] leading-[50px]  lg:text-[50px] lg:leading-[60px] text-center font-Poppis font-semibold mb-5 text-white">
+          <h1 className=" text-[36px] leading-[50px]  lg:text-[50px] lg:leading-[60px] text-center font-Poppis font-semibold mb-5 text-white">
             Get notified when we add new Facility.
           </h1>
           <p className="text-center text-[16px] leading-[26px] text-[#fff] mb-5">

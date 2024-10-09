@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useLoginMutation } from "../../redux/api/authApi/authApi";
 import { useAppDispatch } from "../../redux/hook";
@@ -15,6 +15,9 @@ const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location);
   const [login, { isLoading }] = useLoginMutation();
   const [credentials, setCredentials] = useState<{
     email: string;
@@ -54,7 +57,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(location?.state ? location.state.from.pathname : "/");
       }
     } catch (error: any) {
       console.log(error);

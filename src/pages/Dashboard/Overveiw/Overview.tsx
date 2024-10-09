@@ -1,7 +1,7 @@
 import CardDataStats from "@/components/CardDataStats";
 import ChartOne from "@/components/Charts/ChartOne";
 import ChartTwo from "@/components/Charts/ChartTwo";
-import React from "react";
+
 import TopFaclicty from "../TopFaclicty/TopFaclicty";
 
 const Overview = () => {

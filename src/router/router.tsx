@@ -44,15 +44,15 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: (
-          <PrivateRoute>
-            <FacilityDetail />
-          </PrivateRoute>
-        ),
+        element: <FacilityDetail />,
       },
       {
         path: "/booking/:id",
-        element: <FacilityBooking />,
+        element: (
+          <PrivateRoute>
+            <FacilityBooking />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/contac",

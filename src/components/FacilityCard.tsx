@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Rating } from "@smastrom/react-rating";
@@ -40,7 +39,11 @@ const FacilityCard = (props: {
             </h3>
             <p>
               {" "}
-              <Rating style={{ maxWidth: 50 }} value={rating} />
+              <Rating
+                style={{ maxWidth: 50 }}
+                value={rating}
+                onChange={(e: any) => setRating(e.target.value)}
+              />
             </p>
 
             <p className="text-[16px] leading-[26px] text-[#666270]">

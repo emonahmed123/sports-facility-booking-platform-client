@@ -43,7 +43,7 @@ const FeaturedFacilities = () => {
           OUR Featured <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   mb-10">
-          {facility?.data?.map((item: any) => (
+          {facility?.data?.slice(0, 4).map((item: any) => (
             <FacilityCard item={item} key={item.index}></FacilityCard>
           ))}
         </div>

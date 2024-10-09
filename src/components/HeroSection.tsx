@@ -1,6 +1,6 @@
 const HeroSection = () => {
   return (
-    <section className="h-screen   2xl:h-[650px] bg-[url('https://img.freepik.com/premium-photo/dynamic-sports-background-vector-sports-day-perfect-gift-certificates-banners-flyers_444642-27222.jpg?w=826')] bg-cover bg-center bg-no-repeat bg-red-500">
+    <section className="h-[60vh]  md:h-[80vh] lg:h-[50vh] xl:h-[100vh] 2xl:h-[650px] bg-[url('https://img.freepik.com/premium-photo/dynamic-sports-background-vector-sports-day-perfect-gift-certificates-banners-flyers_444642-27222.jpg?w=826')] bg-cover bg-center bg-no-repeat bg-red-500">
       <div className=" bg-[#f9f9f966]  w-full h-full  flex justify-center items-center">
         <div className="max-w-[1170px] mx-auto px-5 xl:px-0 font-Poppis">
           <div className="max-w-[770px] mx-auto text-center">

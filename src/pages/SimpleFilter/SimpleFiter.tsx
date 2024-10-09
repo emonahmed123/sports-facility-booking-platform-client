@@ -2,7 +2,7 @@
 import FacilityCard from "@/components/FacilityCard";
 import { useGetFacilityQuery } from "@/redux/api/facilitesApi/facilitesApi";
 import Loading from "@/components/Loading";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const SimpleFiter = () => {
   const { data: facility, isLoading, isError } = useGetFacilityQuery(undefined);
@@ -46,7 +46,7 @@ const SimpleFiter = () => {
       <div className="  max-w-[1170px] mx-auto px-5 xl:px-0">
         <h2 className="text-3xl mb-10 font-bold text-center">
           {" "}
-          OUR All <span className="text-[#3d85ff]">Facilities </span>{" "}
+          Our All <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
 
         <div className="max-w-[600px] mx-auto mb-10">

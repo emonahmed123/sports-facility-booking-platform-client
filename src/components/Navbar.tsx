@@ -47,7 +47,7 @@ const navbar = () => {
             {open ? <IoCloseOutline /> : <CiMenuFries />}
           </div>
         </div>
-        <ul className="md:flex hidden uppercase items-center gap-8 font-">
+        <ul className="md:flex hidden uppercase items-center gap-4 lg:gap-8 font-">
           <li>
             <Link to="/" className="py-7 px-3 inline-block">
               Home
@@ -55,12 +55,12 @@ const navbar = () => {
           </li>
           <li>
             <Link to="/AboutUs" className="py-7 px-3 inline-block">
-              About Us
+              About
             </Link>
           </li>
           <li>
             <Link to="/contac" className="py-7 px-3 inline-block">
-              Contact Us
+              Contact
             </Link>
           </li>
 

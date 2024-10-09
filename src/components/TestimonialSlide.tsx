@@ -15,7 +15,7 @@ const TestimonialSlide = () => {
         </h1>
 
         {/* description */}
-        <p className="text-[14px] max-w-[640px] mx-auto ">
+        <p className="text-[14px] max-w-[640px] mx-auto px-3 xl:px-0 ">
           Hear from our satisfied User in the Testimonials section, where real
           customers share their experiences and stories about their favorite
           facilates and the exceptional service they received.

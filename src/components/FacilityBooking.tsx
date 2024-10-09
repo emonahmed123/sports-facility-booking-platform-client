@@ -97,7 +97,7 @@ const FacilityBooking = () => {
 
           <div className="flex justify-center mt-5  gap-x-2 shrink-0">
             <DatePicker
-              className="border py-2 px-2  w-[350px] rounded-[9px]"
+              className="border py-2 px-2  w-[300px] md:w-[350px] rounded-[9px]"
               selected={startDate ? new Date(startDate) : null}
               onChange={handleDateChange}
               dateFormat="yyyy/MM/dd" // For display
@@ -136,7 +136,7 @@ const FacilityBooking = () => {
 
           <div className="">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text text-bold">
