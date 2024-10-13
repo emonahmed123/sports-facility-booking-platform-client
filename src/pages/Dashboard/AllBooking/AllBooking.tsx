@@ -34,7 +34,7 @@ const AllBooking = () => {
                   <td>{item?.facility?.name}</td>
                   <td className="">${item?.payableAmount}</td>
                   <td>
-                    <span className="text-success py-2 px-2 rounded-full text-white">
+                    <span className="text-success py-2 px-2 rounded-full ">
                       {item?.isBooked}
                     </span>
                   </td>

@@ -9,17 +9,37 @@ import {
 import { MdDashboard } from "react-icons/md";
 import { useGetMeQuery } from "@/redux/api/authApi/authApi";
 import Loading from "../Loading";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { RootState } from "@/redux/store";
 import { FaPersonRifle } from "react-icons/fa6";
 
+import Swal from "sweetalert2";
+import { logout } from "@/redux/features/userSlice";
+import { ImExit } from "react-icons/im";
 const DashBoard = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
-
+  const dispatch = useAppDispatch();
   const { pathname } = useLocation();
 
   const { data: me, isLoading } = useGetMeQuery(undefined);
-
+  const handleLogout = () => {
+    dispatch(logout());
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      },
+    });
+    Toast.fire({
+      icon: "success",
+      title: `Log out successfully`,
+    });
+  };
   if (isLoading) {
     return <Loading />;
   }
@@ -158,6 +178,14 @@ const DashBoard = () => {
                 </li>
               </>
             )}
+
+            <li className="text-[#FFF] text-[20px] py-2 relative top-[80px]">
+              {" "}
+              <button className="text-[16px]" onClick={handleLogout}>
+                {" "}
+                <ImExit /> LogOut
+              </button>{" "}
+            </li>
           </ul>
         </div>
       </div>

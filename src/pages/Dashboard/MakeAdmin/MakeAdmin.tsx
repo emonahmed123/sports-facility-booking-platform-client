@@ -201,19 +201,21 @@ const MakeAdmin = () => {
                 </div>
               </div>
 
-              {isLoading ? (
-                <button className=" btn w-full  bg-[#3d85ff] text-[#ffff]">
-                  {" "}
-                  Loading{" "}
-                  <span className="loading loading-dots loading-xs"></span>{" "}
-                </button>
-              ) : (
-                <input
-                  className=" btn w-full  bg-[#3d85ff] text-[#ffff]"
-                  type="submit"
-                  value="Make Admin"
-                />
-              )}
+              <div className="max-w-[500px] mx-auto">
+                {isLoading ? (
+                  <button className=" btn w-full  bg-[#3d85ff] text-[#ffff]">
+                    {" "}
+                    Loading{" "}
+                    <span className="loading loading-dots loading-xs"></span>{" "}
+                  </button>
+                ) : (
+                  <input
+                    className=" btn  mx-auto bg-[#3d85ff] text-[#ffff] w-full"
+                    type="submit"
+                    value="Make Admin"
+                  />
+                )}
+              </div>
             </form>
           </div>
         </div>

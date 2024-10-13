@@ -21,6 +21,7 @@ import MyBooking from "@/pages/Dashboard/MyBooking/MyBooking";
 import PaymentSuccess from "@/pages/Payment/PaymentSuccess";
 import Overview from "@/pages/Dashboard/Overveiw/Overview";
 import SimpleFiter from "@/pages/SimpleFilter/SimpleFiter";
+import Edit from "@/pages/Dashboard/Edit";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
         element: <SimpleFiter />,
       },
       {
+        path: "/update",
+        element: <Edit />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
@@ -104,6 +109,10 @@ export const router = createBrowserRouter([
             <UpdateFacility />
           </AdminRoute>
         ),
+      },
+      {
+        path: "/dashboard/update",
+        element: <Edit />,
       },
       {
         path: "makeadmin",
