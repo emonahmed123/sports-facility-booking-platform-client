@@ -43,14 +43,16 @@ const FeaturedFacilities = () => {
           OUR Featured <span className="text-[#3d85ff]">Facilities </span>{" "}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5   mb-10">
-          {facility?.data?.slice(0, 4).map((item: any) => (
+          {facility?.data?.slice(0, 3).map((item: any) => (
             <FacilityCard item={item} key={item.index}></FacilityCard>
           ))}
         </div>
 
-        <button className=" flex justify-center items-center text-primary w-full ">
-          <Link to="/filter"> View More </Link>
-        </button>
+        <div className="flex justify-center items-center">
+          <button className=" font-semibold text-[16px] rounded-[9px]   bg-[#3d85ff] min-w-[200px] h-[60px] px-[20px] text-white">
+            <Link to="/filter"> View More </Link>
+          </button>
+        </div>
       </div>
     </section>
   );
