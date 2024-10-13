@@ -77,7 +77,7 @@ const Edit = () => {
       </h2>
       <div className="max-w-[1000px] mx-auto px-2 xl:px-0">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-2 gap-7">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-7">
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text text-bold">Name </span>

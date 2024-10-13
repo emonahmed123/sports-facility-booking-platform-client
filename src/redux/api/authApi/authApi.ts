@@ -28,6 +28,7 @@ const authApi = baseApi.injectEndpoints({
         url: "/auth/me",
         method: "GET",
       }),
+      providesTags: ["fac", "book"],
     }),
     updateMe: builder.mutation({
       query: (userInfo) => ({
@@ -35,6 +36,7 @@ const authApi = baseApi.injectEndpoints({
         method: "POST",
         body: userInfo,
       }),
+      invalidatesTags: ["fac", "book"],
     }),
   }),
 });

@@ -72,7 +72,7 @@ const UpdateFacility = () => {
         </h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="grid grid-cols-2 gap-x-2">
+          <div className="grid grid-cols-1  sm:grid-cols-2 gap-x-2">
             <div className="form-control w-full ">
               <label className="label">
                 <span className="label-text text-bold">Name </span>

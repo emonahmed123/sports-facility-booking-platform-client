@@ -23,7 +23,7 @@ const bookingApi = baseApi.injectEndpoints({
         method: "POST",
         body: Info,
       }),
-      invalidatesTags: ["fac"],
+      invalidatesTags: ["book"],
     }),
     DeletedBooking: builder.mutation({
       query: (params) => ({

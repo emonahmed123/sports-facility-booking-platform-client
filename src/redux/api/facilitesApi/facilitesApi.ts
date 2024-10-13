@@ -9,6 +9,13 @@ const facilitesApi = baseApi.injectEndpoints({
       }),
       providesTags: ["fac"],
     }),
+    getOverview: builder.query({
+      query: () => ({
+        url: "facility/overview",
+        method: "GET",
+      }),
+      providesTags: ["fac"],
+    }),
     getSingleFacility: builder.query({
       query: (params) => ({
         url: `/facility/${params}`,
@@ -48,4 +55,5 @@ export const {
   usePostSingleFacilityMutation,
   useDeletedSingleFacilityMutation,
   useUpdateSingleFacilityMutation,
+  useGetOverviewQuery,
 } = facilitesApi;

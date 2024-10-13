@@ -51,8 +51,8 @@ const Myprofile = () => {
               }}
             />
             <div className="absolute bottom-1 right-1  xsm:bottom-4 xsm:right-4">
-              <label
-                htmlFor="cover"
+              <Link
+                to="/dashboard/update"
                 className="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary px-2 py-1 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4"
               >
                 <span>
@@ -78,21 +78,16 @@ const Myprofile = () => {
                     />
                   </svg>
                 </span>
-                <Link to="/update">Edit</Link>
-              </label>
+                <span>Edit</span>
+              </Link>
             </div>
           </div>
           <div className="px-4 pb-6 text-center lg:pb-8 xl:pb-11.5">
             <div className="relative mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-44 sm:p-3">
-              <div className="relative drop-shadow-2">
+              <div className=" drop-shadow-2">
                 <img
                   src={User?.image}
-                  width={160}
-                  height={160}
-                  style={{
-                    width: "auto",
-                    height: "auto",
-                  }}
+                  className="w-[140px] h-[115px] sm:h-[150px] sm:w-[160px] object-cover md:w-[160px] md:h-[150px] rounded-[74px]"
                   alt="profile"
                 />
               </div>

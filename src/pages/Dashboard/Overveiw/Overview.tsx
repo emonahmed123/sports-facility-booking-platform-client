@@ -3,12 +3,27 @@ import ChartOne from "@/components/Charts/ChartOne";
 import ChartTwo from "@/components/Charts/ChartTwo";
 
 import TopFaclicty from "../TopFaclicty/TopFaclicty";
+import { useGetOverviewQuery } from "@/redux/api/facilitesApi/facilitesApi";
+import Loading from "@/components/Loading";
 
 const Overview = () => {
+  const { data: Overview, isLoading } = useGetOverviewQuery(undefined);
+
+  console.log(Overview);
+  if (isLoading) {
+    return <Loading />;
+  }
+  const { TotalBooking, TotalProdct, TotalProfilt, TotalUser } = Overview.data;
+
   return (
     <div className="max-w-[1440px] mx-auto px-5 ">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total Order" total="20" rate="" levelUp>
+        <CardDataStats
+          title="Total Booking"
+          total={TotalBooking}
+          rate=""
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -27,7 +42,12 @@ const Overview = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Profit" total="12000" rate="" levelUp>
+        <CardDataStats
+          title="Total Profit"
+          total={TotalProfilt}
+          rate=""
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="20"
@@ -50,7 +70,12 @@ const Overview = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Product" total="6" rate="" levelUp>
+        <CardDataStats
+          title="Total Facilities"
+          total={TotalProdct}
+          rate=""
+          levelUp
+        >
           <svg
             className="fill-primary dark:fill-white"
             width="22"
@@ -69,7 +94,7 @@ const Overview = () => {
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Total Users" total="10" rate="" levelDown>
+        <CardDataStats title="Total Users" total={TotalUser} rate="" levelDown>
           <svg
             className="fill-primary dark:fill-white"
             width="22"
