@@ -49,9 +49,11 @@ const FeaturedFacilities = () => {
         </div>
 
         <div className="flex justify-center items-center">
-          <button className=" font-semibold text-[16px] rounded-[9px]   bg-[#3d85ff] min-w-[200px] h-[60px] px-[20px] text-white">
-            <Link to="/filter"> View More </Link>
-          </button>
+          <Link to="/filter">
+            <button className=" font-semibold text-[16px] rounded-[9px]   bg-[#3d85ff] min-w-[200px] h-[60px] px-[20px] text-white">
+              View More
+            </button>
+          </Link>
         </div>
       </div>
     </section>

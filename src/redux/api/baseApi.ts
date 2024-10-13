@@ -4,7 +4,7 @@ export const baseApi = createApi({
   reducerPath: "api",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api",
+    baseUrl: "https://sports-facility-booking-platform-sable.vercel.app/api",
 
     prepareHeaders: (headers) => {
       const persistedState = localStorage.getItem("persist:user");
